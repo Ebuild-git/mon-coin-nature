@@ -36,6 +36,7 @@ return new class extends Migration
             $table->boolean('cmd')->default(false);
             $table->boolean('vo')->default(false);
             $table->boolean('livrable')->default(false);
+            $table->boolean('bonne_affaires')->default(false);
             $table->softDeletes();
             $table->timestamps();
 

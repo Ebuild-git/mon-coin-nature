@@ -27,6 +27,8 @@ class produits extends Model
     'statut',
     'photos',
     'free_shipping  ',
+    'bonne_affaire',
+    'bonne_affaires',
     'top',
     ];
     protected $casts = [

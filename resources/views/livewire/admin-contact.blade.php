@@ -428,18 +428,18 @@
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-username">Description </label>
 
-                    <textarea type="text" wire:model="des_prix" placeholder="La description" rows="3"
+                    <textarea type="text" wire:model="des_apropos1" placeholder="La description" rows="3"
                         class="form-control"> </textarea>
-                    @error('des_prix')
+                    @error('des_apropos1')
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>
                 <div class="col-md-4">
                     <label class="form-label" for="multicol-username">Icone(100*100) </label>
 
-                    <input type="file" wire:model="icone_prix" accept="image/*"
+                    <input type="file" wire:model="image_apropos1" accept="image/*"
                         placeholder="Cargez les images" class="form-control">
-                    @error('icone_prix')
+                    @error('image_apropos1')
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>

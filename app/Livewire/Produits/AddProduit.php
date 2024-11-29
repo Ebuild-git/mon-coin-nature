@@ -15,6 +15,7 @@ class AddProduit extends Component
     public $nom,$tags, $prix, $category_id,$photo, $photos, $prix_achat, $photo2, $photos2, $produit, $reference, $description,$marque_id ;
 
 public $free_shipping;
+public $bonne_affaires;
     public function mount($produit)
     {
         if ($produit) {
@@ -30,6 +31,8 @@ public $free_shipping;
             $this->photos2 = $produit->photos;
             $this->description = $produit->description;
             $this->free_shipping = $produit->free_shipping;
+            $this->bonne_affaires = $produit->bonne_affaires ?? 0;
+           // $this->top = $produit->top;
          //   $this->tags = $produit->tags;
 
         }
@@ -66,6 +69,7 @@ public $free_shipping;
             'category_id' => 'required|integer|exists:categories,id',
             
             'free_shipping' => 'nullable|boolean',
+            'bonne_affaires' => 'nullable',
             'marque_id' => 'nullable|integer|exists:marques,id',
          //  'marque_id' => 'nullable|integer|exists:marques,id',
         ]);
@@ -84,9 +88,11 @@ public $free_shipping;
         $produit->nom = $this->nom;
 
      //   $produit->tags = $this->tags;
-                $produit->description = $this->description;
+      $produit->description = $this->description;
         $produit->reference = $this->reference;
         $produit->free_shipping = $this->free_shipping;
+        $produit->bonne_affaires = $this->bonne_affaires ?? false;
+      // $produit->top = $this->top;
         // $produit->category = $this->category;
 
         $produit->category_id = $this->category_id;
@@ -129,6 +135,7 @@ public $free_shipping;
                'marque_id' => 'nullable|integer|exists:marques,id',
                 'category_id' => 'required|integer|exists:categories,id',
                 'free_shipping' => 'nullable|boolean',
+                'bonne_affaires' => 'nullable',
             ]);
 
 
@@ -141,6 +148,7 @@ public $free_shipping;
             $this->produit->marque_id = $this->marque_id;
             $this->produit->category_id = $this->category_id;
             $this->produit->free_shipping = $this->free_shipping;
+            $this->produit->bonne_affaires = $this->bonne_affaires ?? false;
           //  $produit->category_id = $this->category_id;
 
             if ($this->photo) {
