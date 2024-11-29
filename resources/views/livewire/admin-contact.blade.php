@@ -260,16 +260,16 @@
             <hr class="my-6 mx-n4" />
             <div class="text-center bg-primary card my-auto p-1 mb-3">
                 <h6 class="text-white">
-                    Statistiques
+                    Valeurs
                 </h6>
             </div>
 
 
-            <div class="text-center  card my-auto p-1 mb-3">
+           {{--  <div class="text-center  card my-auto p-1 mb-3">
                 <h6 class="text-red">
                     Statistique 1
                 </h6>
-            </div>
+            </div> --}}
             <div class="row g-6">
                 <div class="col-md-2">
                     <label class="form-label" for="multicol-username">Titre</label>
@@ -309,11 +309,11 @@
                 </div>
                 <br><br>
 
-                <div class="text-center  card my-auto p-1 mb-3">
+               {{--  <div class="text-center  card my-auto p-1 mb-3">
                     <h6 class="text-red">
                         Statistique 2
                     </h6>
-                </div>
+                </div> --}}
 
                 <div class="col-md-2">
                     <label class="form-label" for="multicol-username">Titre</label>
@@ -357,12 +357,12 @@
 
                 <br><br>
 
-                <div class="text-center  card my-auto p-1 mb-3">
+             {{--    <div class="text-center  card my-auto p-1 mb-3">
                     <h6 class="text-red">
                         Statistique 3
                     </h6>
                 </div>
-
+ --}}
                 <div class="col-md-2">
                     <label class="form-label" for="multicol-username">Titre</label>
 
@@ -401,6 +401,50 @@
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>
+
+
+
+
+                <div class="col-md-2">
+                    <label class="form-label" for="multicol-username">Titre</label>
+
+                    <input type="text" wire:model="titre_apropos1" placeholder="Le titre " rows="3"
+                        class="form-control">
+                    @error('titre_apropos1')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+
+               {{--  <div class="col-md-3">
+                    <label class="form-label" for="multicol-username">Nombre</label>
+
+                    <input type="number" wire:model="prix" placeholder="Le nombre " rows="3"
+                        class="form-control">
+                    @error('prix')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div> --}}
+
+                <div class="col-md-6">
+                    <label class="form-label" for="multicol-username">Description </label>
+
+                    <textarea type="text" wire:model="des_prix" placeholder="La description" rows="3"
+                        class="form-control"> </textarea>
+                    @error('des_prix')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="multicol-username">Icone(100*100) </label>
+
+                    <input type="file" wire:model="icone_prix" accept="image/*"
+                        placeholder="Cargez les images" class="form-control">
+                    @error('icone_prix')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+
+                
 
 
 
