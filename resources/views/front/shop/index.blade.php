@@ -114,12 +114,12 @@
 										<div class="goods-filter__inner">
 											<!-- start widget -->
 											<div class="widget widget--search">
-												<form class="form--horizontal" action="#" method="get">
+												<form class="form--horizontal" role="search" action="{{ url('search') }}" method="get">
 													<div class="input-wrp">
-														<input class="textfield" name="s" type="text" placeholder="Search" />
+														<input value="{{ $nom ?? '' }}" class="textfield" id="search" type="search" name="search" placeholder="{{ \App\Helpers\TranslationHelper::TranslateText('Rechercher produit') }}" />
 													</div>
 
-													<button class="custom-btn custom-btn--tiny custom-btn--style-1" type="submit" role="button">Rechercher</button>
+													<button class="custom-btn custom-btn--tiny custom-btn--style-1" type="submit" role="button">{{ \App\Helpers\TranslationHelper::TranslateText('Rechercher') }}</button>
 												</form>
 											</div>
 											<!-- end widget -->
@@ -175,7 +175,7 @@
 
 											<!-- start widget -->
 											<div class="widget widget--additional">
-												<h4 class="h6 widget-title">Familles</h4>
+												<h4 class="h6 widget-title">{{ \App\Helpers\TranslationHelper::TranslateText('Familles') }}</h4>
 
 												<ul>
 													@foreach ($marques as $marque)
@@ -223,100 +223,50 @@
 
 											<!-- start widget -->
 											<div class="widget widget--products">
-												<h4 class="h6 widget-title">Dernières publications</h4>
-
+												<h4 class="h6 widget-title">{{ \App\Helpers\TranslationHelper::TranslateText('Les 5 dernières publication') }}</h4>
+												@php
+												$lastproduits= DB::table('produits')->latest()->take(5)->get();
+											@endphp
 												<ul>
+													@foreach ($lastproduits as $produit) 
 													<li>
 														<div class="row no-gutters">
 															<div class="col-auto __image-wrap">
 																<figure class="__image">
-																	<a href="single_product.html">
-																		<img class="lazy" src="img/blank.gif" data-src="img/goods_img/5.jpg" alt="demo" />
+																	<a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
+																		<img class="lazy" src="{{ Storage::url($produit->photo) }}" data-src="{{ Storage::url($produit->photo) }}" alt="demo" />
 																	</a>
 																</figure>
 															</div>
 
 															<div class="col">
-																<h4 class="h6 __title"><a href="single_product.html">Big Banana</a></h4>
+																<h4 class="h6 __title"><a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">{{ \App\Helpers\TranslationHelper::TranslateText( $produit->nom ?? ' ' ) }}</a></h4>
 
-																<div class="rating">
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item"><i class="fontello-star"></i></span>
-																</div>
+															
 
 																<div class="product-price">
-																	<span class="product-price__item product-price__item--new">2.99 $</span>
-																	<span class="product-price__item product-price__item--old">4.11 $</span>
+																	<span class="product-price__item product-price__item--new">  {{ $produit->prix }} DT</span>
+																	{{-- <span class="product-price__item product-price__item--old">  {{ $produit->prix }} DT</span> --}}
 																</div>
 															</div>
 														</div>
 													</li>
+													@endforeach
 
-													<li>
-														<div class="row no-gutters">
-															<div class="col-auto __image-wrap">
-																<figure class="__image">
-																	<a href="single_product.html">
-																		<img class="lazy" src="img/blank.gif" data-src="img/goods_img/8.jpg" alt="demo" />
-																	</a>
-																</figure>
-															</div>
-
-															<div class="col">
-																<h4 class="h6 __title"><a href="single_product.html">Awesome Peach </a></h4>
-
-																<div class="rating">
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item"><i class="fontello-star"></i></span>
-																</div>
-
-																<div class="product-price">
-																	<span class="product-price__item product-price__item--new">10.99 $</span>
-																</div>
-															</div>
-														</div>
-													</li>
-
-													<li>
-														<div class="row no-gutters">
-															<div class="col-auto __image-wrap">
-																<figure class="__image">
-																	<a href="single_product.html">
-																		<img class="lazy" src="img/blank.gif" data-src="img/goods_img/2.jpg" alt="demo" />
-																	</a>
-																</figure>
-															</div>
-
-															<div class="col">
-																<h4 class="h6 __title"><a href="single_product.html">Awesome Brocoli</a></h4>
-
-																<div class="rating">
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-																	<span class="rating__item"><i class="fontello-star"></i></span>
-																</div>
-
-																<div class="product-price">
-																	<span class="product-price__item product-price__item--new">5.99 $</span>
-																</div>
-															</div>
-														</div>
-													</li>
+												
 												</ul>
 											</div>
 											<!-- end widget -->
 
 											<!-- start widget -->
+
+											@php
+												$lastproduit= DB::table('produits')->latest()->take(1)->get();
+											@endphp
 											<div class="widget widget--banner">
-												<a href="#"><img class="img-fluid  lazy" src="img/blank.gif" data-src="img/widget_banner_2.jpg" alt="demo" /></a>
+												@foreach ($lastproduit as $produit) 
+												<a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}"><img class="img-fluid  lazy" src="{{ Storage::url($produit->photo) }}" data-src="{{ Storage::url($produit->photo) }}" alt="demo" /></a>
+											@endforeach
 											</div>
 											<!-- end widget -->
 										</div>
@@ -369,37 +319,29 @@
 														<div class="__content">
 															<h4 class="h6 __title"><a  href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">{{ $produit->nom }}</a></h4>
 
-															<div class="__category"><a href="#">Fruits</a></div>
-
+														
 															<div class="product-price">
 																<span class="product-price__item product-price__item--new">
-
+	
 																	@if ($produit->inPromotion())
-																	<div class="row">
-																		<div class="col-sm-6 col-6">
+                                                   
+                                                      
 
-																			<b class="text-success"
-																				style="color: #4169E1">
-																				{{ $produit->getPrice() }} DT
-																			</b>
-																		</div>
-
-																		<div class="col-sm-6 col-6 text-end">
-
-
-
-																	
-																			<span class="price old-price"
-																				style="position: relative; font-size: 1.5rem; color: #dc3545; font-weight: bold;">
-																				{{ $produit->prix }} <x-devise></x-devise>
-																				<span
-																					style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background-color: black;"></span>
-																			</span>
-
-
-																		</div>
-																	@else
-																		{{ $produit->getPrice() }}DT
+																	<span class="product-price__item product-price__item--new">
+																		{{ $produit->getPrice() }} DT
+																	</span>
+															  
+				
+															  
+																
+				
+																		<span class="product-price__item product-price__item--old">
+																		   {{ $produit->prix }} DT
+																		</span>
+				
+				
+																
+															 
 																@endif
 																</span>
 															</div>

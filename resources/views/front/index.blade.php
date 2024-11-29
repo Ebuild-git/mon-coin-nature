@@ -109,23 +109,66 @@
 				<section class="section section--no-pt section--no-pb">
 					<div class="container-fluid">
 						<!-- start promo banners -->
+
 						<div class="promo-banners">
 							<div class="__inner">
-								<div class="row">
-									<div class="col-12 col-md-6 col-lg-4">
-										<a class="__item" href="#"><img src="img/promo-banners_img/1.jpg" alt="demo" class="img-fluid w-100" /></a>
+								<div class="category-slider">
+									@foreach ($categories as $category)
+									<div>
+										<a href="/category/{{ $category->id }}" 
+										   class="{{ isset($current_category) && $current_category->id === $category->id ? 'selected' : '' }}">
+											<img src="{{ $category->photo ? Storage::url($category->photo) : asset('images/default-category.jpg') }}" 
+												 alt="{{ $category->name }}" 
+												 class="img-fluid w-100" 
+												 loading="lazy" />
+										</a>
 									</div>
-
-									<div class="col-12 col-md-6 col-lg-4">
-										<a class="__item" href="#"><img src="img/promo-banners_img/2.jpg" alt="demo" class="img-fluid w-100" /></a>
-									</div>
-
-									<div class="col-12 col-md-6 col-lg-4">
-										<a class="__item" href="#"><img src="img/promo-banners_img/3.jpg" alt="demo" class="img-fluid w-100" /></a>
-									</div>
+									@endforeach
 								</div>
 							</div>
 						</div>
+						<script>
+							$(document).ready(function() {
+								$('.category-slider').slick({
+									infinite: true, // Activer la boucle
+									slidesToShow: 3, // Nombre d'éléments affichés
+									slidesToScroll: 1, // Nombre d'éléments défilés par clic
+									autoplay: true, // Activer le défilement automatique
+									autoplaySpeed: 2000, // Vitesse de défilement automatique (en ms)
+									arrows: false, // Afficher les flèches de navigation
+									dots: true, // Afficher les points de navigation
+									responsive: [
+										{
+											breakpoint: 768, // Écrans de taille moyenne
+											settings: {
+												slidesToShow: 2
+											}
+										},
+										{
+											breakpoint: 480, // Petits écrans
+											settings: {
+												slidesToShow: 1
+											}
+										}
+									]
+								});
+							});
+						</script>
+												
+					
+					{{-- 	<div class="promo-banners">
+							<div class="__inner">
+								<div class="row">
+									
+									@foreach ($categories as $category)
+									<div class="col-12 col-md-6 col-lg-4">
+										<a class="__item" href="/category/{{ $category->id }}" class="{{ isset($current_category) && $current_category->id === $category->id ? 'selected' : '' }}"><img src="{{ Storage::url($category->photo) }}"  alt="demo" class="img-fluid w-100" /></a>
+									</div>
+									@endforeach
+
+								</div>
+							</div>
+						</div> --}}
 						<!-- end promo banners -->
 
 						<div class="spacer py-4 py-lg-6"></div>
@@ -287,9 +330,7 @@
         
                                         </a></h4>
 
-                                        <div class="__category"><a href="#">{{ \App\Helpers\TranslationHelper::TranslateText($produit->categories->nom ?? ' ') }}</a>
-                                        </div>
-        
+                                     
 										
                                 <div class="product-price">
                                     <span class="product-price__item product-price__item--new">
