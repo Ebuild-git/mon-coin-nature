@@ -29,6 +29,9 @@
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
+                    <th>
+                        Solde
+                    </th>
                     <th>Phone</th>
                     <th>Adresse</th>
                     <th>Pays</th>
@@ -53,6 +56,35 @@
                         <td>
                             {{ $client->prenom }}
                         </td>
+                        
+                            <td class="cusor">
+                            
+    
+                                @if ($client->solde > 500)
+                                    <!-- Icône pour en solde -->
+                                    <span class="text-success" title="En solde">
+                                       {{--  <i class="fas fa-check-circle"></i> --}}
+                                        <span class="badge badge-success">En solde</span>
+                                        {{ $client->solde }} U.
+                                    </span>
+                                @endif
+    
+                                @if ($client->solde < 500 && $client->solde > 0)
+                                    <!-- Seuil pour l'alerte -->
+                                    {{ $client->solde }} U.
+                                    <span class="badge badge-yellow" title="{{ $client->solde }} client(s) en solde pour le moment"  style="background-color: rgb(222, 222, 19) ;  color: rgb(252, 253, 251);">Alerte solde Bas</span>
+                                @endif
+    
+    
+                                @if ($client->solde == 0)
+                                    <!-- Icône pour rupture de solde -->
+                                    <span class="text-danger" title="Rupture de solde">
+                                       {{--  <i class="fas fa-times-circle"></i> --}}
+                                        <span class="badge badge-danger">Rupture</span>
+                                    </span>
+                                @endif
+                            </td>
+                      
                         <td>
                             {{ $client->phone }}
                         </td>
@@ -67,6 +99,11 @@
                         </td>
                         <td>{{ $client->created_at }} </td>
                         <td style="text-align: right;">
+
+                            <button class="btn btn-primary btn-sm" title="Ajouter solde"
+                                        wire:click="openModal({{ $client->id }})">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
                             @can('clients_view')
                                 <div class="btn-group">
                                     {{-- <button class="btn btn-sm btn-primary" type="button">
@@ -101,5 +138,56 @@
     </div>
     {{ $clients->links('pagination::bootstrap-4') }}
 
+    <style>
+        .badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .badge-success {
+            background-color: green;
+        }
+
+        .badge-danger {
+            background-color: red;
+        }
+    </style>
+
+    @if ($showModal)
+        <div class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ajouter solde pour {{ $selectedClient }}</h5>
+                        <button type="button" class="btn-close" wire:click="$set('showModal', false)"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form wire:submit.prevent="addSolde">
+                            <div class="mb-3">
+                                <label for="solde" class="form-label">Solde à ajouter</label>
+                                <input type="number" id="solde" wire:model="solde" class="form-control"
+                                    min="1">
+                                @error('solde')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    <script>
+        document.addEventListener('livewire:load', function() {
+            Livewire.on('openModal', () => {
+                var modal = new bootstrap.Modal(document.getElementById('add-solde-modal'));
+                modal.show();
+            });
+        });
+    </script>
 
 </div>

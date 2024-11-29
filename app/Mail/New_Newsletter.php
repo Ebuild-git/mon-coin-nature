@@ -25,7 +25,7 @@ class New_Newsletter extends Mailable
     public function build()
     {
         return $this->view('Mail.Newsletter')
-            ->subject("Félicitation pour votre inscription sur KONICA NEWSLETTER");
+            ->subject("Félicitation pour votre inscription sur Mon Coin Narure");
 
     }
 }

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('code_postal')->nullable(true)->default(null);
             $table->enum("role",["personnel","admin","client","developper"])->default("client");
             $table->string('token')->nullable();
+            $table->decimal('solde', 13, 3)->nullable()->default(null);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

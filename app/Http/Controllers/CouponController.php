@@ -147,8 +147,8 @@ class CouponController extends Controller
               'id_produit' => $produit->id,
               'photo' => $produit->photo,
               'quantite' => $session['quantite'],
-              'prix' => $produit->prix,
-              'total' => $session['quantite'] * $produit->prix,
+              'prix' => $produit->getPrice(),
+              'total' => $session['quantite'] * $produit->getPrice(),
             ];
          //   $total += $session['quantite'] * $produit->prix;
 
@@ -177,7 +177,7 @@ class CouponController extends Controller
         ]);
 
         $coupon = Coupon::where('code', $request->input('code'))->first();
-
+dd($coupon);
         if (!$coupon) {
             return redirect()->back()->with('error', 'Coupon non valide.');
         }
@@ -188,19 +188,15 @@ class CouponController extends Controller
         foreach ($paniers_session as $session) {
             $produit = produits::find($session['id_produit']);
 
-          /*   if(!$produit->id_promotion) { */
-                // si le produit est une promotion, on applique le coupon
-
-
                 $paniers[] = [
                     'nom' => $produit->nom,
                     'id_produit' => $produit->id,
                     'photo' => $produit->photo,
                     'quantite' => $session['quantite'],
-                    'prix' => $produit->prix,
-                    'total' => $session['quantite'] * $produit->prix,
+                    'prix' => $produit->getPrice(),
+                    'total' => $session['quantite'] * $produit->getPrice(),
                 ];
-                $total += $session['quantite'] * $produit->prix;
+                $total += $session['quantite'] * $produit->getPrice();
                if($coupon->type=='percent'){
               
                 $discount =   ($total*$coupon->value)/100;
@@ -223,26 +219,10 @@ class CouponController extends Controller
                     'value' => $discount,
                 ]);
                }
-            
-              /*  else
-                {
-                    return redirect()->back()->with('error', 'Appliquable aux produits qui ne sont pas en promotion.');
-                } */
-
-
-
-        
-       
-
-            
+    
         }
 
-
-
-
-        
-
-
+    //    dd($discount);
         
         $total -=  $discount;
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\commandes\CommandesRequest;
 use Illuminate\Http\Request;
-use App\Models\{commandes, produits,Coupon, contenu_commande, config, notifications, User};
+use App\Models\{commandes, produits,Coupon, contenu_commande, config, notifications, User, Transport};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -90,7 +90,9 @@ class CommandeController extends Controller
    
    $gouvernorats = $this->getListGouvernorat();
 
-    return view('front.commandes.checkout', compact('configs', 'paniers', 'total','gouvernorats'));
+   $transports = Transport ::all();
+
+    return view('front.commandes.checkout', compact('configs', 'paniers', 'total','gouvernorats','transports'));
   }
 
 
@@ -143,10 +145,8 @@ if($connecte){
      'note' => $request->input('note'),
      'frais' => $configs->frais ?? 0,
      'gouvernorat' => $request->input('gouvernorat'),
+     'mode' => $request->input('mode'),
      'coupon' => isset(session('coupon')['value']) ? session('coupon')['value'] : null,
-//'coupon' => session('coupon')['value'],
-    // 'total' => $total,
-   //  'value'=> $value,
 
     
     
@@ -164,7 +164,7 @@ if($connecte){
 
   $order = new commandes([
 
-  ///  'user_id' => auth()->user()->id,
+  
      'nom' => $request->input('nom'),
      'prenom' => $request->input('prenom'),
      'email' => $request->input('email'),
@@ -174,11 +174,9 @@ if($connecte){
      'note' => $request->input('note'),
      'frais' => $configs->frais ?? 0,
      'gouvernorat' => $request->input('gouvernorat'),
-  //   'coupon' => session('coupon')['value'],
+     'mode' => $request->input('mode'),
+  
   'coupon' => isset(session('coupon')['value']) ? session('coupon')['value'] : null,
-
-    // 'total' => $total,
-    // 'value'=> $value,
 
    ]);[
      'email.required' => 'Veuillez entrer votre email',
@@ -226,11 +224,7 @@ if($connecte){
           'id_produit' => $produit->id,
           'prix_unitaire' => $produit->getPrice(),
           'quantite' => $session['quantite'],
-          //'total' => $session
-         // 'total' => $session['quantite'] * $produit->prix,
-         // 'created_at' => now(),
-          //'updated_at' => now(),
-
+       
         ]);
 
 
@@ -247,7 +241,6 @@ if($connecte){
 
     //generate notification
     $notification = new notifications();
-   // $notification->url = "admin/commande" . $order->id;
    $notification->url = route('details_commande', ['id' => $order->id]);
     $notification->titre = "Nouvelle commande.";
    $notification->message = "Commande passée par " . $order->nom;

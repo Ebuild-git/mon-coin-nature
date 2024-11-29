@@ -1,5 +1,5 @@
 
-
+{{-- 
 
 
 <form   wire:submit='connexion' class="singin-form">
@@ -98,14 +98,89 @@
         }
 
         .btn-bg-secondary2 {
-        background-color: #EFB121; /* Couleur de fond, bleu dans cet exemple */
-        color: #ffffff; /* Couleur du texte, blanc dans cet exemple */
+        background-color: #EFB121; 
+        color: #ffffff; 
         border: none;
-        padding: 10px 20px; /* Optionnel, ajuste la taille */
-        border-radius: 5px; /* Optionnel, arrondit les coins */
-        text-decoration: none; /* Supprime le soulignement */
+        padding: 10px 20px; 
+        border-radius: 5px; 
+        text-decoration: none; 
     }
     </style>
+</form>
+ --}}
+
+<form wire:submit='connexion' class="auth-form" action="#">
+
+    @if (session()->has('error'))
+    <div class="alert alert-danger p-3 small">
+        {{ session('error') }}
+    </div>
+@endif
+@if (session()->has('success'))
+    <div class="alert alert-success p-3 small">
+        {{ session('success') }}
+    </div>
+@endif
+    <div class=" input-wrp">
+       
+        <input class="textfield" wire:model="email" type="mail" placeholder=" {{ \App\Helpers\TranslationHelper::TranslateText('Votre adresse mail') }} *" />
+        @error('email')
+        <span class="text-danger small">
+            {{ $message }}
+        </span>
+    @enderror
+    </div>
+
+    <div class="input-wrp">
+        <input class="textfield" 
+        type="password" 
+            id="password1" 
+          
+            wire:model="password" 
+        
+     placeholder=" {{ \App\Helpers\TranslationHelper::TranslateText('Mot de passe') }}" />
+
+  
+      
+      @error('password')
+      <span class="text-danger small">
+          {{ $message }}
+      </span>
+      @enderror
+    </div>
+
+    <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+            <label class="checkfield align-bottom">
+                <input type="checkbox" checked="">
+                <i></i>
+                
+                {{ \App\Helpers\TranslationHelper::TranslateText('Se souvenir de moi') }}
+            </label>
+        </div>
+
+        <div class="col-auto">
+            <a class="link-forgot" href="{{ route('forgot_password') }}">
+                {{ \App\Helpers\TranslationHelper::TranslateText('Mot de passe oublié') }}?
+            </a>
+        </div>
+    </div>
+
+    <div class="d-table mt-8">
+        <div class="d-table-cell align-middle">
+           
+            <button class="custom-btn custom-btn--medium custom-btn--style-1" type="submit" role="button"> {{ \App\Helpers\TranslationHelper::TranslateText('Connexion') }}
+
+                <span wire:loading>
+                    <img src="https://i.gifer.com/ZKZg.gif" height="15" alt="" srcset="">
+                </span>
+            </button>
+        </div>
+
+        <div class="d-table-cell align-middle">
+            <a class="link-to"  href="{{ url('register') }}"> {{ \App\Helpers\TranslationHelper::TranslateText('S\'inscrire') }}</a>
+        </div>
+    </div>
 </form>
 
 

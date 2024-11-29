@@ -374,6 +374,13 @@ public function marques()
     return view('admin.marques.list');
 }
 
+/////////////////Transports////////////////
+
+public function transports()
+{
+    return view('admin.transports.list');
+}
+
 
 public function service_add()
 {

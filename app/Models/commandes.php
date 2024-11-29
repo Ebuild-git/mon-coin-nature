@@ -26,6 +26,7 @@ class commandes extends Model
             "frais", 
         'password',
         'user_id',
+        'mode'
 
         
     ];

@@ -17,7 +17,7 @@
     
                     <input name="sur_devis" class="form-check-input"  class="switch"   type="checkbox" id="sur_devis" wire:model.lazy="free_shipping"
                        wire:click="free_shipping">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Livraison gratuite</label>
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Bonne affaire</label>
                     @error('free_shipping')
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror

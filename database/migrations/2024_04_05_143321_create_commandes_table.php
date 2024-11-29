@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum("statut", ['créé','attente','livraison' ,'traitement', 'En cours livraison', 'livrée', 'payée','planification','retournée'])->default('attente');
           
-                $table->enum("mode", ["espèce","paypal","carte de credit"])->default("espèce");
+                $table->enum("mode", ["espèce","paypal","carte de credit","solde","livraison"])->default("espèce");
             $table->enum("etat",["attente","confirmé","annulé"])->default("attente") ;
             $table->text("note")->nullable()->default(null);
             $table->string("nom")->nullable();

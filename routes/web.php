@@ -146,6 +146,11 @@ Route::middleware(['auth'])->group(function () {
         ->name('categories.update')
         ->middleware('permission:category_edit');
 
+        ///////////////////Transports/////////////////
+        Route::get('/admin/transports', [AdminController::class, 'transports'])
+            ->name('transports');
+    Route::get('/admin/transport/add', [AdminController::class, 'transport_add']);
+
 
     ///////////////Les services/////////////////////////////////
 

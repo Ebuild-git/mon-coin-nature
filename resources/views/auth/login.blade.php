@@ -1,163 +1,163 @@
-@include('sweetalert::alert')
-@php
-$config = DB::table('configs')->first();
-$service = DB::table('services')->get();
-$produit = DB::table('produits')->get();
-@endphp
+@extends('front.fixe')
+@section('titre', 'Accueil')
+@section('body')
+<main>
+    @php
+    $config = DB::table('configs')->first();
+    $service = DB::table('services')->get();
+    $produit = DB::table('produits')->get();
+    @endphp
 
 
+	<body class="woocommerce-page auth-page">
+		<div id="app">
+		
+			<!-- start hero -->
+			<div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url(img/intro_img/15.jpg);color: #333;">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-7">
+							<h1 class="__title"><span>Agro Shop</span> Sign in/up</h1>
 
-<!doctype html>
-<html class="no-js" lang="en">
+							<p>
+								The point of using is that it has a more-or-less normal distribution of letters, as opposed to using Content here content here making it look
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end hero -->
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Connexion</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url($config->icon ?? ' ') }}">
+			<!-- start main -->
+			<main role="main">
+				<!-- Common styles
+				================================================== -->
+				<link rel="stylesheet" href="css/style.min.css" type="text/css">
 
-    <!-- CSS
-    ============================================ -->
+				<!-- Load lazyLoad scripts
+				================================================== -->
+				<script>
+					(function(w, d){
+						var m = d.getElementsByTagName('main')[0],
+							s = d.createElement("script"),
+							v = !("IntersectionObserver" in w) ? "8.17.0" : "10.19.0",
+							o = {
+								elements_selector: ".lazy",
+								data_src: 'src',
+								data_srcset: 'srcset',
+								threshold: 500,
+								callback_enter: function (element) {
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
-    <link rel="stylesheet" href="assets/css/vendor/flaticon/flaticon.css">
-    <link rel="stylesheet" href="assets/css/vendor/slick.css">
-    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
-    <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/sal.css">
-    <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/vendor/base.css">
-    <link rel="stylesheet" href="assets/css/style.min.css">
+								},
+								callback_load: function (element) {
+									element.removeAttribute('data-src')
 
-</head>
+									oTimeout = setTimeout(function ()
+									{
+										clearTimeout(oTimeout);
+
+										AOS.refresh();
+									}, 1000);
+								},
+								callback_set: function (element) {
+
+								},
+								callback_error: function(element) {
+									element.src = "https://placeholdit.imgix.net/~text?txtsize=21&txt=Image%20not%20load&w=200&h=200";
+								}
+							};
+						s.type = 'text/javascript';
+						s.async = true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
+						s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";
+						m.appendChild(s);
+						// m.insertBefore(s, m.firstChild);
+						w.lazyLoadOptions = o;
+					}(window, document));
+				</script>
+
+				<!-- start section -->
+				<section class="section">
+					<div class="decor-el decor-el--1" data-jarallax-element="-70" data-speed="0.2">
+						<img class="lazy" width="286" height="280" src="img/blank.gif" data-src="img/decor-el_1.jpg" alt="demo"/>
+					</div>
+
+					<div class="decor-el decor-el--3" data-jarallax-element="-70" data-speed="0.2">
+						<img class="lazy" width="115" height="117" src="img/blank.gif" data-src="img/decor-el_3.jpg" alt="demo"/>
+					</div>
+
+					<div class="decor-el decor-el--4" data-jarallax-element="-70" data-speed="0.2">
+						<img class="lazy" width="84" height="76" src="img/blank.gif" data-src="img/decor-el_4.jpg" alt="demo"/>
+					</div>
+
+                    
+					<div class="container">
+						<div class="row">
+                            <div class="col-sm-4">
+                                <div class="heading-section">
+                                  
+                                    
+                                </div>
+                            </div>
+							<div class="col-12 col-md-6 col-lg-5 col-xl-4 ">
+								<h2> {{ \App\Helpers\TranslationHelper::TranslateText('Connexion') }}</h2>
+                                @livewire('connexion')
+								<!-- start form -->
+						{{-- 		<form class="auth-form" action="#">
+									<div class=" input-wrp">
+										<input class="textfield" type="text" placeholder=" {{ \App\Helpers\TranslationHelper::TranslateText('Votre adresse mail') }} *" />
+									</div>
+
+									<div class="input-wrp">
+										<input class="textfield" type="text" placeholder=" {{ \App\Helpers\TranslationHelper::TranslateText('Mot de passe') }}" />
+									</div>
+
+									<div class="row align-items-center justify-content-between">
+										<div class="col-auto">
+											<label class="checkfield align-bottom">
+												<input type="checkbox" checked="">
+												<i></i>
+												
+                                                {{ \App\Helpers\TranslationHelper::TranslateText('Se souvenir de moi') }}
+											</label>
+										</div>
+
+										<div class="col-auto">
+											<a class="link-forgot" href="#">
+                                                {{ \App\Helpers\TranslationHelper::TranslateText('Mot de passe oublié') }}?
+                                            </a>
+										</div>
+									</div>
+
+									<div class="d-table mt-8">
+										<div class="d-table-cell align-middle">
+											<button class="custom-btn custom-btn--medium custom-btn--style-1" type="submit" role="button"> {{ \App\Helpers\TranslationHelper::TranslateText('Connexion') }}</button>
+										</div>
+
+										<div class="d-table-cell align-middle">
+											<a class="link-to" href="#"> {{ \App\Helpers\TranslationHelper::TranslateText('S\'inscrire') }}</a>
+										</div>
+									</div>
+								</form> --}}
+								<!-- end form -->
+
+								<div class="spacer py-6 d-md-none"></div>
+
+							</div>
+
+                            <div class="col-2 col-md-12 col-lg-6 col-xl-6 ">
+
+                            </div>
+
+						</div>
+					</div>
+				</section>
+				<!-- end section -->
+
+			</main>
+			<!-- end main -->
+
+        </main>
 
 
-<body>
-    <div class="axil-signin-area">
-
-        <!-- Start Header -->
-        <div class="signin-header">
-            <div class="row align-items-center">
-                <div class="">
-                    {{-- <a href="{{ url('home') }}" class="site-logo"><img src="{{ Storage::url($config->logo) }}" width="50" height="50" alt="logo"></a>
-                    --}}</div>
-
-
-                <div class="col-sm-8 d-flex justify-content-end">
-                    <a href="{{ route('home') }}" class="logo logo-dark">
-                        <img src="{{ Storage::url($config->logo ?? ' ') }}" width="200" height="200" alt="Site Logo">
-                    </a>
-
-                </div>
-                <div class="col-sm-4">
-                    <div class="singin-header-btn">
-                        <p> {{ \App\Helpers\TranslationHelper::TranslateText('Pas de compte') }}?</p>
-                        <a href="{{ url('register') }}" class="axil-btn btn-bg-secondary2 sign-up-btn"> {{ \App\Helpers\TranslationHelper::TranslateText('S\'inscrire') }}</a>
-                        <style>
-                            .btn-bg-secondary2 {
-                                background-color: #5EA13C;
-
-                                color: #ffffff;
-
-                                border: none;
-                                padding: 10px 20px;
-
-                                border-radius: 5px;
-
-                                text-decoration: none;
-
-                            }
-
-                            .btn-bg-secondary2:hover {
-                                background-color: #5EA13C;
-
-                                color: #ffffff;
-
-                            }
-
-                        </style>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Header -->
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-6">
-                <style>
-                    .bg_image--9 {
-                        background-image: url('{{ Storage::url($config->image_login) }}');
-                        background-repeat: no-repeat;
-                        background-size: cover;
-                        background-position: center center;
-                    }
-
-                    .axil-signin-banner .title {
-                        font-size: 18px;
-                        font-weight: bold;
-                        text-transform: uppercase;
-                        margin: 0;
-                        position: relative;
-                        z-index: 2;
-                        color: #EFB121;
-
-                    }
-
-                </style>
-                <div class="axil-signin-banner bg_image bg_image--9">
-                    <h3 class="title">
-                        {{ \App\Helpers\TranslationHelper::TranslateText('Nous offrons les mellieurs produits') }} .</h3>
-                </div>
-            </div>
-            <div class="col-lg-6 offset-xl-2">
-                <div class="axil-signin-form-wrap">
-                    <div class="axil-signin-form">
-                        <h3 class="title">
-                         {{ \App\Helpers\TranslationHelper::TranslateText('Connectez-vous à ') }} Ben Madmoud Market</h3>
-                        <p class="b2 mb--55">
-                            {{ \App\Helpers\TranslationHelper::TranslateText('Entrez les coordonnées ci-dessous') }}
-                        </p>
-
-
-                        @livewire('connexion')
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- JS
-============================================ -->
-    <!-- Modernizer JS -->
-    <script src="assets/js/vendor/modernizr.min.js"></script>
-    <!-- jQuery JS -->
-    <script src="assets/js/vendor/jquery.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="assets/js/vendor/popper.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="assets/js/vendor/slick.min.js"></script>
-    <script src="assets/js/vendor/js.cookie.js"></script>
-    <!-- <script src="assets/js/vendor/jquery.style.switcher.js"></script> -->
-    <script src="assets/js/vendor/jquery-ui.min.js"></script>
-    <script src="assets/js/vendor/jquery.ui.touch-punch.min.js"></script>
-    <script src="assets/js/vendor/jquery.countdown.min.js"></script>
-    <script src="assets/js/vendor/sal.js"></script>
-    <script src="assets/js/vendor/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/vendor/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/vendor/isotope.pkgd.min.js"></script>
-    <script src="assets/js/vendor/counterup.js"></script>
-    <script src="assets/js/vendor/waypoints.min.js"></script>
-
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
+        @endsection
+        

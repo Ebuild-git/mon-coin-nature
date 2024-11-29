@@ -165,7 +165,7 @@
                     </li>
                 @endcan
 
-                <li>
+             {{--    <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon icon-color-3"> <i class="ri-list-ordered"></i>
                         </div>
@@ -189,17 +189,17 @@
 
 
                     </ul>
-                </li>
+                </li> --}}
 
-              {{--     <li>
-                    <a href="{{ route('marques') }}">
+                 <li>
+                    <a href="{{ route('transports') }}">
                         <div class="parent-icon icon-color-3"> <i class="ri-boxing-fill"></i>
                         </div>
                         <div class="menu-title">
-                            Les marques
+                            Les frais de transport
                         </div>
                     </a>
-                </li>  --}} 
+                </li>  
 
              {{--    <li>
                     <a href="javascript:;" class="has-arrow">
