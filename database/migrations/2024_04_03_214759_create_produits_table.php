@@ -27,6 +27,17 @@ return new class extends Migration
             $table->json('photos')->nullable();
             $table->boolean('top')->default(false);
             $table->boolean('free_shipping')->nullable()->default(false);
+
+
+            $table->unsignedBigInteger("sous_category_id")->nullable();
+            $table->unsignedBigInteger("sous_categorie_id")->nullable();
+            $table->unsignedBigInteger("marque_id")->nullable();
+
+            $table->integer("taille")->nullable();
+            $table->boolean('valable')->default(false);
+            $table->boolean('cmd')->default(false);
+            $table->boolean('vo')->default(false);
+            $table->boolean('livrable')->default(false);
             $table->softDeletes();
             $table->timestamps();
 
