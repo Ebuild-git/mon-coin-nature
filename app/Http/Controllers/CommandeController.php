@@ -109,6 +109,8 @@ class CommandeController extends Controller
       'prenom' => ['nullable', 'string', 'max:255'],
       'email' => 'required',
       'coupon'=>'nullable|numeric',
+      'transport_id' =>'required|integer|exists:transports,id',
+    //  'category_id' => 'required|integer|exists:categories,id',
    
      
         'phone' => 'required',
@@ -129,6 +131,8 @@ class CommandeController extends Controller
      
     }
 
+    $shipping=Transport::where('id',$order_data['shipping_id'])->pluck('price');
+
 
 //dd($discuont);
 if($connecte){
@@ -143,7 +147,8 @@ if($connecte){
      'phone' => $request->input('phone'),
      'pays' => $request->input('pays'),
      'note' => $request->input('note'),
-     'frais' => $configs->frais ?? 0,
+   //  'frais' => $configs->frais ?? 0,
+     'frais'=>Transport::where('id',$request['shipping_id'])->pluck('frais'),
      'gouvernorat' => $request->input('gouvernorat'),
      'mode' => $request->input('mode'),
      'coupon' => isset(session('coupon')['value']) ? session('coupon')['value'] : null,
@@ -172,7 +177,8 @@ if($connecte){
      'phone' => $request->input('phone'),
      'pays' => $request->input('pays'),
      'note' => $request->input('note'),
-     'frais' => $configs->frais ?? 0,
+    // 'frais' => $configs->frais ?? 0,
+     'frais'=>Transport::where('id',$request['shipping_id'])->pluck('frais'),
      'gouvernorat' => $request->input('gouvernorat'),
      'mode' => $request->input('mode'),
   

@@ -53,7 +53,7 @@
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>
-              {{--   <div class="col-sm-6 mb-3">
+                <div class="col-sm-6 mb-3">
                     <label for="">Marque </label>
                     <select wire:model='marque_id' class="form-control @error('marque_id') is-invalid @enderror">
                         <option value=""></option>
@@ -61,10 +61,10 @@
                             <option value="{{ $cat->id }}">{{ $cat->nom }}</option>
                         @endforeach
                     </select>
-                    @error('category_id')
+                    @error('marque_id')
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
-                </div>  --}}
+                </div> 
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="">Prix de vente</label>

@@ -165,6 +165,32 @@
                     </li>
                 @endcan
 
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon icon-color-3"> <i class="ri-list-ordered"></i>
+                        </div>
+                        <div class="menu-title">
+                            Les marques
+                        </div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('marques') }}">
+                                <i class="bx bx-right-arrow-alt"></i>
+                                Liste des marques
+                            </a>
+                        </li>
+                       {{--  <li>
+                            <a href="{{ route('category.add') }}">
+                                <i class="bx bx-right-arrow-alt"></i>
+                                Créer une categorie
+                            </a>
+                        </li> --}}
+
+
+                    </ul>
+                </li>
+
              {{--    <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon icon-color-3"> <i class="ri-list-ordered"></i>

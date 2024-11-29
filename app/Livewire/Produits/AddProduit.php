@@ -66,7 +66,7 @@ public $free_shipping;
             'category_id' => 'required|integer|exists:categories,id',
             
             'free_shipping' => 'nullable|boolean',
-           // 'marque_id' => 'nullable|integer|exists:marques,id',
+            'marque_id' => 'nullable|integer|exists:marques,id',
          //  'marque_id' => 'nullable|integer|exists:marques,id',
         ]);
         ;[
@@ -90,7 +90,7 @@ public $free_shipping;
         // $produit->category = $this->category;
 
         $produit->category_id = $this->category_id;
-       // $produit->marque_id = $this->marque_id;
+        $produit->marque_id = $this->marque_id;
 
 
 
@@ -126,7 +126,7 @@ public $free_shipping;
                 'prix_achat' => 'required|numeric',
                 'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp',
                 'photos.*' => 'nullable|image|mimes:jpg,jpeg,png,webp',
-              //  'marque_id' => 'nullable|integer|exists:marques,id',
+               'marque_id' => 'nullable|integer|exists:marques,id',
                 'category_id' => 'required|integer|exists:categories,id',
                 'free_shipping' => 'nullable|boolean',
             ]);
@@ -138,7 +138,7 @@ public $free_shipping;
         
             $this->produit->prix = $this->prix;
             $this->produit->prix_achat = $this->prix_achat;
-          //  $this->produit->marque_id = $this->marque_id;
+            $this->produit->marque_id = $this->marque_id;
             $this->produit->category_id = $this->category_id;
             $this->produit->free_shipping = $this->free_shipping;
           //  $produit->category_id = $this->category_id;

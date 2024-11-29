@@ -104,6 +104,34 @@
 				</script>
              <br><br>
 
+
+				<!-- start section -->
+				<section class="section section--no-pt section--no-pb">
+					<div class="container-fluid">
+						<!-- start promo banners -->
+						<div class="promo-banners">
+							<div class="__inner">
+								<div class="row">
+									<div class="col-12 col-md-6 col-lg-4">
+										<a class="__item" href="#"><img src="img/promo-banners_img/1.jpg" alt="demo" class="img-fluid w-100" /></a>
+									</div>
+
+									<div class="col-12 col-md-6 col-lg-4">
+										<a class="__item" href="#"><img src="img/promo-banners_img/2.jpg" alt="demo" class="img-fluid w-100" /></a>
+									</div>
+
+									<div class="col-12 col-md-6 col-lg-4">
+										<a class="__item" href="#"><img src="img/promo-banners_img/3.jpg" alt="demo" class="img-fluid w-100" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end promo banners -->
+
+						<div class="spacer py-4 py-lg-6"></div>
+					</div>
+				</section>
+
 				<!-- start section -->
 				<section class="section section--no-pt section--no-pb">
 					<div class="container">
@@ -198,7 +226,7 @@
 
 					<div class="container">
 						<div class="section-heading section-heading--left" data-aos="fade">
-							<h2 class="__title">Featured <span>Products</span></h2>
+							<h2 class="__title">{{ \App\Helpers\TranslationHelper::TranslateText('Explorez') }} <span>{{ \App\Helpers\TranslationHelper::TranslateText('nos produits') }}</span></h2>
 						</div>
 
 						<!-- start goods -->
@@ -267,40 +295,43 @@
                                     <span class="product-price__item product-price__item--new">
 
                                         @if ($produit->inPromotion())
-                                                    <div class="row">
-                                                        <div class="col-sm-6 col-6">
+                                                   
+                                                      
 
-                                                            <b class="text-success" style="color: #4169E1">
+															<span class="product-price__item product-price__item--new">
                                                                 {{ $produit->getPrice() }} DT
-                                                            </b>
-                                                        </div>
+															</span>
+                                                      
 
-                                                        <div class="col-sm-6 col-6 text-end">
-                                                            <strike>
+                                                      
+                                                        
 
-
-                                                                <span style="font-size: 1.7rem; color: #dc3545; font-weight: bold;">
-                                                                    {{ $produit->prix }} DT
+																<span class="product-price__item product-price__item--old">
+                                                                   {{ $produit->prix }} DT
                                                                 </span>
 
 
-                                                            </strike>
-                                                        </div>
+                                                        
+                                                       
                                                         @else
-                                                        {{-- {{ $produit->getPrice() }}DT --}}
+                                                     
 
 
-                                                        <span class="price current-price" style="font-size: 1.7rem;">
+														<span class="product-price__item product-price__item--new">
                                                             {{ $produit->getPrice() }} <x-devise></x-devise>
                                                             </b></span>
                                                         @endif
+
+														
                                     </span>
                                 </div>
 
 										<a class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{\App\Helpers\TranslationHelper::TranslateText('Ajouter au panier')}}</a>
 									</div>
-
-									<span class="product-label product-label--sale">Sale</span>
+									@if ($produit->inPromotion())
+									<span class="product-label product-label--sale">-{{ $produit->inPromotion()->pourcentage }}%</span>
+									@endif
+									
 								</div>
                                 @endif
                                 @endforeach
@@ -315,187 +346,22 @@
 				<!-- end section -->
 
 				<!-- start section -->
-				<section class="section section--no-pt section--no-pb section--gutter">
-					<div class="container-fluid px-md-0">
-						<!-- start banner simple -->
-						<div class="simple-banner simple-banner--style-2" data-aos="fade" data-aos-offset="50">
-							<div class="d-none d-lg-block">
-							{{-- 	
-								<img class="img-logo img-fluid  lazy" src="{{ Storage::url($config->logo ?? ' ') }}"  data-src="{{ Storage::url($config->logo ?? ' ') }}" alt="demo" />
-							 --}}
-							</div>
-						
-		
-							
-		
-						</style>
-
-							<div class="row no-gutters">
-								<div class="col-12 col-lg-6">
-									<a href="#"><img class="img-fluid w-100  lazy" src="img/blank.gif" data-src="img/banner_bg_3.jpg" alt="demo" /></a>
-								</div>
-
-								<div class="col-12 col-lg-6">
-									<a href="#"><img class="img-fluid w-100  lazy" src="img/blank.gif" data-src="img/banner_bg_4.jpg" alt="demo" /></a>
-								</div>
-							</div>
-						</div>
-						<!-- end banner simple -->
-					</div>
-				</section>
+			
 				<!-- end section -->
 
 				<!-- start section -->
-				<section class="section">
-					<div class="d-none d-lg-block">
-						<img id="bg-img-1" class="img-fluid lazy" src="img/blank.gif" data-src="img/agro_2.png" alt="demo" />
-						<style type="text/css">
-							#bg-img-1
-							{
-								position: absolute;
-								top: 50%;
-								left: 50%;
-								-webkit-transform: translate(-50%,-50%);
-								-ms-transform: translate(-50%,-50%);
-								transform: translate(-50%,-50%);
-							}
-						</style>
-					</div>
-
-					<div class="container">
-						<div class="row">
-							<div class="col-12 col-md-5 col-lg-4">
-								<div class="section-heading section-heading--left" data-aos="fade">
-									<p>
-										<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/logo_small.png" width="50" height="50" alt="demo" />
-									</p>
-
-									<h2 class="__title">Fruits & vegetables <span>farm products</span></h2>
-
-									<p><a class="custom-btn custom-btn--medium custom-btn--style-1" href="#">More about</a></p>
-								</div>
-							</div>
-
-							<div class="col-12 col-md-7 col-lg-8">
-								<!-- start feature -->
-								<div class="feature feature--style-3">
-									<div class="__inner">
-										<div class="row">
-											<!-- start item -->
-											<div class="col-6 col-sm-4 col-lg-3">
-												<div class="__item  text-center" data-aos="fade" data-aos-delay="100" data-aos-offset="100">
-													<i class="__ico">
-														<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/feature_img/7.png" alt="demo" />
-													</i>
-
-													<h5 class="__title">Blueberry</h5>
-												</div>
-											</div>
-											<!-- end item -->
-
-											<!-- start item -->
-											<div class="col-6 col-sm-4 col-lg-3">
-												<div class="__item  text-center" data-aos="fade" data-aos-delay="200" data-aos-offset="100">
-													<i class="__ico">
-														<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/feature_img/8.png" alt="demo" />
-													</i>
-
-													<h5 class="__title">Strawberry</h5>
-												</div>
-											</div>
-											<!-- end item -->
-
-											<!-- start item -->
-											<div class="col-6 col-sm-4 col-lg-3">
-												<div class="__item  text-center" data-aos="fade" data-aos-delay="300" data-aos-offset="100">
-													<i class="__ico">
-														<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/feature_img/9.png" alt="demo" />
-													</i>
-
-													<h5 class="__title">Apples</h5>
-												</div>
-											</div>
-											<!-- end item -->
-
-											<!-- start item -->
-											<div class="col-6 col-sm-4 col-lg-3">
-												<div class="__item  text-center" data-aos="fade" data-aos-delay="400" data-aos-offset="100">
-													<i class="__ico">
-														<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/feature_img/10.png" alt="demo" />
-													</i>
-
-													<h5 class="__title">Orange</h5>
-												</div>
-											</div>
-											<!-- end item -->
-
-											<!-- start item -->
-											<div class="col-6 col-sm-4 col-lg-3">
-												<div class="__item  text-center" data-aos="fade" data-aos-delay="500" data-aos-offset="100">
-													<i class="__ico">
-														<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/feature_img/11.png" alt="demo" />
-													</i>
-
-													<h5 class="__title">Carrot</h5>
-												</div>
-											</div>
-											<!-- end item -->
-
-											<!-- start item -->
-											<div class="col-6 col-sm-4 col-lg-3">
-												<div class="__item  text-center" data-aos="fade" data-aos-delay="600" data-aos-offset="100">
-													<i class="__ico">
-														<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/feature_img/12.png" alt="demo" />
-													</i>
-
-													<h5 class="__title">Cabbage</h5>
-												</div>
-											</div>
-											<!-- end item -->
-
-											<!-- start item -->
-											<div class="col-6 col-sm-4 col-lg-3">
-												<div class="__item  text-center" data-aos="fade" data-aos-delay="700" data-aos-offset="100">
-													<i class="__ico">
-														<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/feature_img/13.png" alt="demo" />
-													</i>
-
-													<h5 class="__title">Potato</h5>
-												</div>
-											</div>
-											<!-- end item -->
-
-											<!-- start item -->
-											<div class="col-6 col-sm-4 col-lg-3">
-												<div class="__item  text-center" data-aos="fade" data-aos-delay="800" data-aos-offset="100">
-													<i class="__ico">
-														<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/feature_img/14.png" alt="demo" />
-													</i>
-
-													<h5 class="__title">Eggplant</h5>
-												</div>
-											</div>
-											<!-- end item -->
-										</div>
-									</div>
-								</div>
-								<!-- end feature -->
-							</div>
-						</div>
-					</div>
-				</section>
-				<!-- end section -->
+			
 
 				<!-- start section -->
 				<section class="section section--no-pt">
 					<div class="container">
 						<div class="special-offer special-offer--style-2" data-aos="zoom-in" data-aos-duration="600" data-aos-offset="70">
 							<h2 class="text  text-center">
-								<span style="color: #635729">Healthy</span>
-								<span style="color: #ff6262">life</span>
-								<span style="color: #ffbb4c">with</span>
-								<span style="color: #fcdb5a">fresh</span>
-								<span style="color: #5e9a4b">products</span>
+								<span style="color: #635729">Mon</span>
+								<span style="color: #ff6262">Coin</span>
+								<span style="color: #ffbb4c">Nature</span>
+								{{-- <span style="color: #fcdb5a">fresh</span>
+								<span style="color: #5e9a4b">products</span> --}}
 							</h2>
 						</div>
 					</div>
@@ -510,44 +376,53 @@
 
 									</div>
 
+					{{-- 	<div class="spacer py-6 py-md-10"></div> --}}
+
 						<!-- start goods -->
-						<div class="goods goods--style-2">
+						<div class="goods goods--style-3">
 							<div class="__inner">
-								<div class="row justify-content-sm-center">
+								<div class="row">
 									<!-- start item -->
 									@if ($produits)
 									@foreach ($produits as $key => $produit)
 									@if ($produit->inPromotion())
-									<div class="col-12 col-sm-6 col-lg-5 col-xl-4">
+									<div class="col-12 col-sm-6 col-lg-3">
 										<div class="__item">
-											<div class="row">
-												<div class="col-12 col-md-6">
-													<figure class="__image">
-														<img class="lazy" width="150" src="{{ Storage::url($produit->photo) }}" data-src="{{ Storage::url($produit->photo) }}" alt="demo" />
-													</figure>
+											<figure class="__image">
+												<img class="lazy" src="{{ Storage::url($produit->photo) }}" data-src="{{ Storage::url($produit->photo) }}" alt="demo" />
+											</figure>
+
+											<div class="__content">
+												<h4 class="h6 __title"><a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">{{ \App\Helpers\TranslationHelper::TranslateText($produit->nom) }}</a></h4>
+
+
+												<div class="product-price">
+													
+													@if ($produit->inPromotion())
+                                                   
+                                                      
+
+													<span class="product-price__item product-price__item--new">
+														{{ $produit->getPrice() }} DT
+													</span>
+											  
+
+											  
+												
+
+														<span class="product-price__item product-price__item--old">
+														   {{ $produit->prix }} DT
+														</span>
+
+
+												
+											 
+												@endif
 												</div>
 
-												<div class="col-12 col-md-6">
-													<div class="__content">
-														<h4 class="h6 __title"><a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">{{ \App\Helpers\TranslationHelper::TranslateText($produit->nom) }}</a></h4>
-
-														<div class="rating">
-															<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-															<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-															<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-															<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-															<span class="rating__item"><i class="fontello-star"></i></span>
-														</div>
-
-														<div class="product-price">
-															<span class="product-price__item product-price__item--new">6.68 $</span>
-															<span class="product-price__item product-price__item--old">8.11 $</span>
-														</div>
-
-														<a class="custom-btn custom-btn--small custom-btn--style-1"  onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{ \App\Helpers\TranslationHelper::TranslateText('Ajouter au panier') }}</a>
-													</div>
-												</div>
+												<a class="custom-btn custom-btn--medium custom-btn--style-1" href="#"><i class="fontello-shopping-bag"></i>Add to cart</a>
 											</div>
+
 											@if ($produit->inPromotion())
 											<span class="product-label product-label--sale">-{{ $produit->inPromotion()->pourcentage }}%</span>
 											@endif
@@ -558,193 +433,11 @@
 									@endif
 									<!-- end item -->
 
-									<!-- end item -->
-								</div>
-							</div>
-						</div>
-						<!-- end goods -->
-
-						<div class="spacer py-6 py-md-10"></div>
-
-						<!-- start goods -->
-						<div class="goods goods--style-3">
-							<div class="__inner">
-								<div class="row">
-									<!-- start item -->
-									<div class="col-12 col-sm-6 col-lg-3">
-										<div class="__item">
-											<figure class="__image">
-												<img class="lazy" src="img/blank.gif" data-src="img/goods_img/1_1.jpg" alt="demo" />
-											</figure>
-
-											<div class="__content">
-												<h4 class="h6 __title"><a href="single_product.html">Organic Raspberries</a></h4>
-
-												<div class="__category"><a href="#">Fruits</a></div>
-
-												<div class="rating">
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item"><i class="fontello-star"></i></span>
-												</div>
-
-												<div class="product-price">
-													<span class="product-price__item product-price__item--old">6,68 $</span>
-													<span class="product-price__item product-price__item--new">6,12 $</span>
-												</div>
-
-												<a class="custom-btn custom-btn--medium custom-btn--style-1" href="#"><i class="fontello-shopping-bag"></i>Add to cart</a>
-											</div>
-
-											<span class="product-label product-label--sale">-20%</span>
-										</div>
-									</div>
-									<!-- end item -->
-
-									<!-- start item -->
-									<div class="col-12 col-sm-6 col-lg-3">
-										<div class="__item">
-											<figure class="__image">
-												<img class="lazy" src="img/blank.gif" data-src="img/goods_img/1_2.jpg" alt="demo" />
-											</figure>
-
-											<div class="__content">
-												<h4 class="h6 __title"><a href="single_product.html">Fresh Banana</a></h4>
-
-												<div class="__category"><a href="#">Fruits</a></div>
-
-												<div class="rating">
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item"><i class="fontello-star"></i></span>
-												</div>
-
-												<div class="product-price">
-													<span class="product-price__item product-price__item--new">6,12 $</span>
-												</div>
-
-												<a class="custom-btn custom-btn--medium custom-btn--style-1" href="#"><i class="fontello-shopping-bag"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-									<!-- end item -->
-
-									<!-- start item -->
-									<div class="col-12 col-sm-6 col-lg-3">
-										<div class="__item">
-											<figure class="__image">
-												<img class="lazy" src="img/blank.gif" data-src="img/goods_img/1_3.jpg" alt="demo" />
-											</figure>
-
-											<div class="__content">
-												<h4 class="h6 __title"><a href="single_product.html">Organic Blackberry</a></h4>
-
-												<div class="__category"><a href="#">Fruits</a></div>
-
-												<div class="rating">
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item"><i class="fontello-star"></i></span>
-												</div>
-
-												<div class="product-price">
-													<span class="product-price__item product-price__item--new">3.12 $</span>
-												</div>
-
-												<a class="custom-btn custom-btn--medium custom-btn--style-1" href="#"><i class="fontello-shopping-bag"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-									<!-- end item -->
-
-									<!-- start item -->
-									<div class="col-12 col-sm-6 col-lg-3">
-										<div class="__item">
-											<figure class="__image">
-												<img class="lazy" src="img/blank.gif" data-src="img/goods_img/1_4.jpg" alt="demo" />
-											</figure>
-
-											<div class="__content">
-												<h4 class="h6 __title"><a href="single_product.html">Awesome Strawberry</a></h4>
-
-												<div class="__category"><a href="#">Fruits</a></div>
-
-												<div class="rating">
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item rating__item--active"><i class="fontello-star"></i></span>
-													<span class="rating__item"><i class="fontello-star"></i></span>
-												</div>
-
-												<div class="product-price">
-													<span class="product-price__item product-price__item--new">1.12 $</span>
-												</div>
-
-												<a class="custom-btn custom-btn--medium custom-btn--style-1" href="#"><i class="fontello-shopping-bag"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-									<!-- end item -->
 								</div>
 							</div>
 						</div>
 						<!-- end goods -->
 					</div>
-				</section>
-				<!-- end section -->
-
-				<!-- start section -->
-				<section class="section section--no-pt section--no-pb section--gutter">
-					<!-- start banner simple -->
-					<div class="simple-banner simple-banner--style-1" data-aos="fade" data-aos-offset="50">
-
-						<div class="__label d-none d-md-block">
-							<div class="d-table m-auto h-100">
-								<div class="d-table-cell align-middle">
-									<span class="num-1">1</span>
-								</div>
-
-								<div class="d-table-cell align-middle">
-									<span class="num-2">50$</span>
-									<span>Kg</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="container">
-							<div class="row">
-								<div class="col-12">
-									<div class="__inner">
-										<img class="img-fluid  lazy" src="img/blank.gif" data-src="img/site_logo.png" alt="demo" />
-
-										<div class="row">
-											<div class="col-12 col-lg-7 col-xl-6">
-												<div class="banner__text" data-aos="fade-left" data-delay="500">
-													<h2 class="__title h1"><b style="display: block; color: #c6c820;">Fresh Exotic Fruits</b> <span>in Our Store</span></h2>
-
-													<p>
-														The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.
-													</p>
-
-													<p>
-														<a class="custom-btn custom-btn--medium custom-btn--style-1" href="#">Buy</a>
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- end banner simple -->
 				</section>
 				<!-- end section -->
 

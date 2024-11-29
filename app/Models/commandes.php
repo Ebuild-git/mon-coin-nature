@@ -26,7 +26,8 @@ class commandes extends Model
             "frais", 
         'password',
         'user_id',
-        'mode'
+        'mode',
+        'transport_id'
 
         
     ];
@@ -68,5 +69,7 @@ class commandes extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    public function shipping(){
+        return $this->belongsTo(Transport::class,'transport_id')->withDefault();
+    }
 }
