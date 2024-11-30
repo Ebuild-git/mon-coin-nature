@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('configs', function (Blueprint $table) {
-           /*  $table->string('icone1')->nullable()->default(null);
+           $table->string('icone1')->nullable()->default(null);
             $table->string('icone2')->nullable()->default(null);
             $table->string('icone3')->nullable()->default(null);
             $table->string('icone4')->nullable()->default(null);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('image3')->nullable()->default(null);
             $table->string('image4')->nullable()->default(null);
             $table->string('image5')->nullable()->default(null);
-            $table->string('image6')->nullable()->default(null); */
+            $table->string('image6')->nullable()->default(null); 
         });
     }
 
@@ -32,7 +32,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('configs', function (Blueprint $table) {
-       /*  $table->dropColumn('icone1');
+         $table->dropColumn('icone1');
         $table->dropColumn('icone2');
         $table->dropColumn('icone3');
         $table->dropColumn('icone4');
@@ -41,7 +41,7 @@ return new class extends Migration
         $table->dropColumn('image3');
         $table->dropColumn('image4');
         $table->dropColumn('image5');
-        $table->dropColumn('image6'); */
+        $table->dropColumn('image6'); 
 
         });
     }
