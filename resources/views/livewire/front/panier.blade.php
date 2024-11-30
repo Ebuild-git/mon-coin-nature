@@ -140,20 +140,20 @@ $configs = DB::table('configs')->first();
 
                         <tbody>
                             @if ($total > 0)
-                            <tr>
+                            {{-- <tr>
                                 <td>Subtotal:</td>
                                 <td>{{ $total }} DT</td>
-                            </tr>
+                            </tr> --}}
 
-                            <tr>
+                           {{--  <tr>
                                 <td> {{ \App\Helpers\TranslationHelper::TranslateText('Frais de livraison') }}</td>
                                 <td>{{ $configs->frais ?? 0 }}
                                     DT</td>
-                            </tr>
+                            </tr> --}}
 
                             <tr>
                                 <td>Total</td>
-                                <td>{{ $total + $configs->frais ?? 0 }} DT</td>
+                                <td>{{ $total  }} DT</td>
                             </tr>
                             @endif
                         </tbody>

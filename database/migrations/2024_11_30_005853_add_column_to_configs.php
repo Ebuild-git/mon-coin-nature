@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('produits', function (Blueprint $table) {
-          //  $table->boolean('bonne_affaires')->default(false);
+        Schema::table('configs', function (Blueprint $table) {
+            //
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('produits', function (Blueprint $table) {
-          //  $table->boolean('bonne_affaires')->default(false);
+        Schema::table('configs', function (Blueprint $table) {
+            //
         });
     }
 };

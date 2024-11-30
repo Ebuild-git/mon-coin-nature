@@ -57,6 +57,19 @@ return new class extends Migration
             $table->string('image_about')->nullable();
             $table->string('image_login')->nullable();
             $table->string('image_register')->nullable();
+
+
+            $table->string('icone1')->nullable()->default(null);
+            $table->string('icone2')->nullable()->default(null);
+            $table->string('icone3')->nullable()->default(null);
+            $table->string('icone4')->nullable()->default(null);
+
+            $table->string('image1')->nullable()->default(null);
+            $table->string('image2')->nullable()->default(null);
+            $table->string('image3')->nullable()->default(null);
+            $table->string('image4')->nullable()->default(null);
+            $table->string('image5')->nullable()->default(null);
+            $table->string('image6')->nullable()->default(null);
             $table->timestamps();
         });
 

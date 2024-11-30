@@ -197,7 +197,9 @@ class HomeController extends Controller
     public function details($id){
         $produit =produits:: findOrFail($id);
         $configs= config::all();
-        return view('front.shop.details', compact('produit','configs'));
+        $categories =Category::has('produits')->get();
+        $marques = Marque::with('produits')->get();
+        return view('front.shop.details', compact('produit','configs','categories','marques'));
     }
     
     public function products($id)

@@ -144,6 +144,8 @@ $produit = DB::table('produits')->get();
                                         <li>
                                             <a href="{{ route('shop') }}">{{ __('boutique') }}</a>
                                         </li>
+                                        <li><a href="{{ route('about') }}">  {{ \App\Helpers\TranslationHelper::TranslateText('A propos de nous') }}</a></li>
+
 
 
                                         <li>

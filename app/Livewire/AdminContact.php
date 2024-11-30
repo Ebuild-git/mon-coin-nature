@@ -22,11 +22,17 @@ class AdminContact extends Component
    $image_contact2, $image_shop2, $image_about2,
    $image_login, $image_register,
    $image_login2, $image_register2,
-   $titre_annee, $titre_prix, $titre_satisfaction; 
-
-
-
-  
+   $titre_annee, $titre_prix, $titre_satisfaction,
+        $icone1, $icone11, 
+        $icone2, $icone22, 
+        $icone3, $icone32, 
+        $icone4, $icone42, 
+        $image1,$image11,
+        $image2,$image22,
+        $image3,$image32,
+        $image4,$image42,
+        $image5,$image52,
+        $image6,$image62;
 
   
     public function mount(){
@@ -216,6 +222,87 @@ class AdminContact extends Component
             }
             $config->icone_prix= $this->icone_prix->store('icon', 'public');
         }
+
+        if($this->icone1){
+            //delete old icon
+            if ($this->icone11) {
+                Storage::disk('public')->delete($this->icone11);
+            }
+            $config->icone1= $this->icone1->store('icon', 'public');
+        }
+
+        if($this->icone2){
+            //delete old icon
+            if ($this->icone22) {
+                Storage::disk('public')->delete($this->icone22);
+            }
+            $config->icone2= $this->icone2->store('icon', 'public');
+        }
+
+        if($this->icone3){
+            //delete old icon
+            if ($this->icone32) {
+                Storage::disk('public')->delete($this->icone32);
+            }
+            $config->icone3= $this->icone3->store('icon', 'public');
+        }
+
+        if($this->icone4){
+            //delete old icon
+            if ($this->icone42) {
+                Storage::disk('public')->delete($this->icone42);
+            }
+            $config->icone4= $this->icone4->store('icon', 'public');
+        }
+      
+   
+        if($this->image1){
+            //delete old image
+            if ($this->image11) {
+                Storage::disk('public')->delete($this->image11);
+            }
+            $config->image1= $this->image1->store('image', 'public');
+        }
+        if($this->image2){
+            //delete old image
+            if ($this->image22) {
+                Storage::disk('public')->delete($this->image22);
+            }
+            $config->image2= $this->image2->store('image', 'public');
+        }
+
+        if($this->image3){
+            //delete old image
+            if ($this->image32) {
+                Storage::disk('public')->delete($this->image32);
+            }
+            $config->image3= $this->image3->store('image', 'public');
+        }
+
+        if($this->image4){
+            //delete old image
+            if ($this->image42) {
+                Storage::disk('public')->delete($this->image42);
+            }
+            $config->image4= $this->image4->store('image', 'public');
+        }
+
+        if($this->image5){
+            //delete old image
+            if ($this->image52) {
+                Storage::disk('public')->delete($this->image52);
+            }
+            $config->image5= $this->image5->store('image', 'public');
+        }
+
+        if($this->image6){
+            //delete old image
+            if ($this->image62) {
+                Storage::disk('public')->delete($this->image62);
+            }
+            $config->image6= $this->image6->store('image', 'public');
+        }
+
         
 
 

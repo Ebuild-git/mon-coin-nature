@@ -70,6 +70,6 @@ class commandes extends Model
         return $this->belongsTo(User::class);
     }
     public function shipping(){
-        return $this->belongsTo(Transport::class,'transport_id')->withDefault();
+        return $this->belongsTo(Transport::class,'tranport_id', 'id')->withDefault();
     }
 }

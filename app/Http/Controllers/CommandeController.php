@@ -92,6 +92,8 @@ class CommandeController extends Controller
 
    $transports = Transport ::all();
 
+   //dd($transports);
+
     return view('front.commandes.checkout', compact('configs', 'paniers', 'total','gouvernorats','transports'));
   }
 
@@ -109,7 +111,7 @@ class CommandeController extends Controller
       'prenom' => ['nullable', 'string', 'max:255'],
       'email' => 'required',
       'coupon'=>'nullable|numeric',
-      'transport_id' =>'required|integer|exists:transports,id',
+      'tranport_id' =>'required|integer|exists:transports,id',
     //  'category_id' => 'required|integer|exists:categories,id',
    
      
@@ -131,13 +133,31 @@ class CommandeController extends Controller
      
     }
 
-    $shipping=Transport::where('id',$order_data['shipping_id'])->pluck('price');
-
+   // $shipping=Transport::where('id',$order_data['shipping_id'])->pluck('price');
+//dd($shipping);
 
 //dd($discuont);
 if($connecte){
 
-  $order = new commandes([
+
+
+  
+  $order = new commandes();
+  $order->user_id = $connecte->id;
+      $order->nom = $request->nom;
+      $order->prenom = $request->prenom;
+      $order->email = $request->email;
+      $order->adresse = $request->adresse;
+      $order->phone = $request->phone;
+      $order->pays = $request->pays;
+      $order->note = $request->note;
+     
+     $order->tranport_id=$request->tranport_id;
+  // $order->transport_id=$request->input('transport_id');
+      $order->gouvernorat = $request->input('gouvernorat');
+      $order->mode = $request->input('mode');
+      $order->coupon = isset(session('coupon')['value']) ? session('coupon')['value'] : null;
+/*   $order = new commandes([
 
     'user_id' => auth()->user()->id,
      'nom' => $request->input('nom'),
@@ -147,7 +167,10 @@ if($connecte){
      'phone' => $request->input('phone'),
      'pays' => $request->input('pays'),
      'note' => $request->input('note'),
-   //  'frais' => $configs->frais ?? 0,
+
+     'transport_id'=>$request->input('transport_id'),
+
+ 
      'frais'=>Transport::where('id',$request['shipping_id'])->pluck('frais'),
      'gouvernorat' => $request->input('gouvernorat'),
      'mode' => $request->input('mode'),
@@ -164,12 +187,31 @@ if($connecte){
      'phone.required' => 'Veuillez entrer votre numéro de téléphone',
      'adresse.required' => 'Veuillez entrer votre addresse',
 
-   ];
+   ]; */
 } else{
 
-  $order = new commandes([
+  $order = new commandes();
+      $order->nom = $request->nom;
+      $order->prenom = $request->prenom;
+      $order->email = $request->email;
+      $order->adresse = $request->adresse;
+      $order->phone = $request->phone;
+      $order->pays = $request->pays;
+      $order->note = $request->note;
+     
+     $order->tranport_id=$request->tranport_id;
+  // $order->transport_id=$request->input('transport_id');
+      $order->gouvernorat = $request->input('gouvernorat');
+      $order->mode = $request->input('mode');
+      $order->coupon = isset(session('coupon')['value']) ? session('coupon')['value'] : null;
+     // $order->frais = Transport::where('id',$request['transport_id'])->pluck('frais');
+     
+   //   $order->frais = $configs->frais ?? 0;
+   //   $order->tax = $configs->tax ?? 0;
 
-  
+/*   $order = new commandes([
+
+
      'nom' => $request->input('nom'),
      'prenom' => $request->input('prenom'),
      'email' => $request->input('email'),
@@ -177,7 +219,9 @@ if($connecte){
      'phone' => $request->input('phone'),
      'pays' => $request->input('pays'),
      'note' => $request->input('note'),
-    // 'frais' => $configs->frais ?? 0,
+     'frais' => $configs->frais ?? 0,
+    'transport_id'=>$request->input('transport_id'),
+
      'frais'=>Transport::where('id',$request['shipping_id'])->pluck('frais'),
      'gouvernorat' => $request->input('gouvernorat'),
      'mode' => $request->input('mode'),
@@ -190,7 +234,7 @@ if($connecte){
      'phone.required' => 'Veuillez entrer votre numéro de téléphone',
      'adresse.required' => 'Veuillez entrer votre addresse',
 
-   ];
+   ]; */
 }
 
 
