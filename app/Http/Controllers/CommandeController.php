@@ -112,7 +112,7 @@ class CommandeController extends Controller
       'prenom' => ['nullable', 'string', 'max:255'],
       'email' => 'required',
       'coupon'=>'nullable|numeric',
-      'tranport_id' =>'nullable|integer|exists:transports,frais',
+      'transport_id' =>'nullable|integer|exists:transports,frais',
     //  'category_id' => 'required|integer|exists:categories,id',
    
      
@@ -155,7 +155,7 @@ if($connecte){
      
     // $order->tranport_id=$request->tranport_id;
      $shipping=Transport::where('id',$order['tranport'])->pluck('frais');
-   $order->tranport_id=$request->input('transport');
+   $order->transport_id=$request->input('transport');
       $order->gouvernorat = $request->input('gouvernorat');
       $order->mode = $request->input('mode');
       $order->coupon = isset(session('coupon')['value']) ? session('coupon')['value'] : null;
@@ -203,7 +203,7 @@ if($connecte){
      
   //   $order->tranport_id=$request->tranport_id;
      $shipping=Transport::where('id',$order['transport_id'])->pluck('frais');
-   $order->tranport_id=$request->input('transport');
+   $order->transport_id=$request->input('transport');
       $order->gouvernorat = $request->input('gouvernorat');
       $order->mode = $request->input('mode');
       $order->coupon = isset(session('coupon')['value']) ? session('coupon')['value'] : null;
