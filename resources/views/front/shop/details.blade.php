@@ -56,6 +56,19 @@
             /* Couleur du texte */
             /* Agrandissement léger */
         }
+
+
+        .bordures {
+border: 2px solid #009640; 
+border-radius: 8px;       
+padding: 15px;            
+margin-bottom: 20px;      
+transition: border-color 0.3s ease; 
+}
+
+.__item:hover {
+border-color: #009640; /* Changer la couleur de la bordure au survol */
+}
     </style>
 
 
@@ -189,19 +202,41 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-md-8 col-lg-9">
+<style>
+  .__product-img {
+    border: 2px solid #28a745; /* Bordure verte */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centrer le contenu */
+}
 
+.__product-img img {
+    border-radius: 6px; /* Bordure intérieure arrondie */
+    display: block; /* Supprime les espaces blancs autour de l'image */
+    margin: auto; /* Centre l'image */
+}
+
+
+
+</style>
                                 <!-- start product single -->
-                                <div class="product-single">
+                                <div class="product-single ">
                                     <div class="row">
                                         <div class="col-12 col-lg-7">
-                                            <div class="__product-img">
-                                                <img width="330" src="{{ Storage::url($produit->photo) }}"
+                                            <div class="__product-img" style=" border-radius: 6px;border: 2px solid #009640; 
+border-radius: 8px;       
+padding: 15px;            
+margin-bottom: 20px;      
+transition: border-color 0.3s ease; ">
+                                                <img width="330" src="{{ Storage::url($produit->photo) }}" 
                                                     alt="demo" />
                                                 @if ($produit->inPromotion())
                                                     <span class="product-label product-label--sale">
                                                         -{{ $produit->inPromotion()->pourcentage }}%</span>
                                                 @endif
-                                                {{-- <span class="product-label product-label--new">New</span> --}}
+                                              
                                             </div>
                                         </div>
 
@@ -312,7 +347,7 @@
                                             @if ($relatedProducts)
                                                 @foreach ($relatedProducts as $produit)
                                                     <div class="col-12 col-sm-6 col-lg-4">
-                                                        <div class="__item">
+                                                        <div class="__item ">
                                                             <figure class="__image">
                                                                 <img class="lazy" width="180"
                                                                     src="{{ Storage::url($produit->photo) }}"

@@ -55,6 +55,18 @@ background-color: #009640
      /* Agrandissement léger */
 }
 
+.__item {
+border: 2px solid #009640; /* Couleur bleue pour la bordure */
+border-radius: 8px;       /* Coins arrondis (optionnel) */
+padding: 15px;            /* Espace interne */
+margin-bottom: 20px;      /* Espacement entre les cadres */
+transition: border-color 0.3s ease; /* Animation fluide */
+}
+
+.__item:hover {
+border-color: #009640; /* Changer la couleur de la bordure au survol */
+}
+
 </style>
 			<!-- start header -->
 			<!-- start hero -->

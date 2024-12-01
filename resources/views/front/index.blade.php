@@ -317,7 +317,20 @@ background-color: #009640
 						<div class="section-heading section-heading--left" data-aos="fade">
 							<h2 class="__title">{{ \App\Helpers\TranslationHelper::TranslateText('Explorez') }} <span>{{ \App\Helpers\TranslationHelper::TranslateText('nos produits') }}</span></h2>
 						</div>
+						<style>
+							.bordures {
+border: 2px solid #009640; 
+border-radius: 8px;      
+padding: 15px;            
+margin-bottom: 20px;      
+transition: border-color 0.3s ease; 
+}
 
+.__item:hover {
+border-color: #009640; 
+}
+
+						</style>
 						<!-- start goods -->
 						<div class="goods goods--style-1 goods--slider">
 							<div class="js-slick"
@@ -360,24 +373,35 @@ background-color: #009640
 										}
 									}]
 								}'>
-								<!-- start item -->
+							
+								
                                 @foreach ($produits as $produit)
                                 @if ($produit)
-								<div class="__item">
+								<div class="__item bordures">
                                     <a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
 									<figure class="__image">
 										<img width="188" src="{{ Storage::url($produit->photo) }}" alt="demo" />
 									</figure>
                                     </a>
-
+									<hr class="w-100" style="border: 1px solid #009640; margin: 10px 0;"> 
 									<div class="__content">
-                                        <h4 class="h6 __title"><a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
+										<h4 class="h6 __title" style="text-align: center; color: #0b0b0b; font-size: 18px; font-weight: bold;">
+ 
+											<a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
                                             {{ \App\Helpers\TranslationHelper::TranslateText( Str::limit($produit->nom, 15)) }}
         
                                         </a></h4>
 
-                                     
-										
+                                     <style>
+										.product-price {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement (si nécessaire) */
+    gap: 10px; /* Espace entre les éléments (optionnel) */
+}
+
+									 </style>
+										 
                                 <div class="product-price">
                                     <span class="product-price__item product-price__item--new">
 
