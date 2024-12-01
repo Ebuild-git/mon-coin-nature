@@ -178,12 +178,12 @@
 												<h4 class="h6 widget-title">{{ \App\Helpers\TranslationHelper::TranslateText('Familles') }}</h4>
 
 												<ul>
-													@foreach ($marques as $marque)
+													@foreach ($souscategories as $marque)
 													<li>
 														<label class="checkfield">
 															<input type="checkbox" checked/>
 															<i></i>
-															{{ $marque->nom }}
+															{{ $marque->titre }}
 														</label>
 													</li>
 													@endforeach

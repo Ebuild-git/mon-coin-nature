@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 //require './vendor/autoload.php';
 
 
-use App\Models\{commandes,config, User,produits, Category, Service,Marque, Testimonial};
+use App\Models\{commandes,config, User,produits, Category, Service,Marque, Testimonial, Sous_category};
 use App\Models\Banners;
+
 use App\Models\templates;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -101,11 +102,11 @@ class HomeController extends Controller
 
     //  $lastproduits = produits::latest()->take(5)->get();
 
-      
+    $souscategories = Sous_category::with('produits')->get();
     
    
         $configs= config::all();
-        return view('front.shop.index',compact('produits', 'categories', 'configs','key','total_produit','max_prix','ordre_affichage'));
+        return view('front.shop.index',compact('souscategories','produits', 'categories', 'configs','key','total_produit','max_prix','ordre_affichage'));
     }
 
     public function search_products(Request $request)
