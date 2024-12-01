@@ -207,6 +207,7 @@
 
                                         <div class="col-12 col-lg-5">
                                             <div class="content-container">
+                                                <br>
                                                 <h3 class="__name">
                                                     {{ \App\Helpers\TranslationHelper::TranslateText($produit->nom) }}
                                                 </h3>

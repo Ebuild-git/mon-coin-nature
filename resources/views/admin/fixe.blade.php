@@ -209,17 +209,12 @@
                                 <i class="bx bx-right-arrow-alt"></i>
                                 Liste des marques
                             </a>
-                        </li> --}}
-                       {{--  <li>
-                            <a href="{{ route('category.add') }}">
-                                <i class="bx bx-right-arrow-alt"></i>
-                                Créer une categorie
-                            </a>
-                        </li> --}}
+                        </li>
+                   
 
 
                     </ul>
-                </li>
+                </li> --}}
 
              {{--    <li>
                     <a href="javascript:;" class="has-arrow">
