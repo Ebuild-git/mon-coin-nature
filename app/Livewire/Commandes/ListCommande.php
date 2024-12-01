@@ -59,6 +59,9 @@ class ListCommande extends Component
         $commandes = $commandesQuery->Orderby('id', "Desc")->paginate(80);
         $total = commandes::count();
         $this->gouvernoratsTunisie = $this->getListGouvernorat();
+        
+    
+     //   dd($commandes);
         return view('livewire.commandes.list-commande', compact("commandes", "total"));
     }
 

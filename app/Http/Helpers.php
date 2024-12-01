@@ -13,24 +13,9 @@ use App\Models\Coupon;
 use App\Models\Cart;
 // use Auth;
 class Helper{
-    public static function messageList()
-    {
-        return Message::whereNull('read_at')->orderBy('created_at', 'desc')->get();
-    } 
-    public static function getAllCategory(){
-        $category=new Category();
-        $menu=$category->getAllParentWithChild();
-        return $menu;
-    } 
+   
     
    
-    public static function productCategoryList($option='all'){
-        if($option='all'){
-            return Category::orderBy('id','DESC')->get();
-        }
-        return Category::has('products')->orderBy('id','DESC')->get();
-    }
-
   
 
     // Cart Count
@@ -38,7 +23,27 @@ class Helper{
        
         if(Auth::check()){
             if($user_id=="") $user_id=auth()->user()->id;
-            return Cart::where('user_id',$user_id)->where('order_id',null)->sum('quantity');
+            return session('cart', [])::where('user_id',$user_id)->sum('quantite');
+        }
+        else{
+            return 0;
+        }
+    }
+    public function montant(){
+        $total = $this->frais;
+        foreach ($this->contenus as $contenu){
+            $total += $contenu->prix_unitaire * $contenu->quantite;
+        }
+        return $total ?? 0;
+    }
+
+    
+
+       // Total amount cart
+       public static function totalCartPrice($user_id=''){
+        if(Auth::check()){
+            if($user_id=="") $user_id=auth()->user()->id;
+            return  session('cart', [])::where('user_id',$user_id)->sum('amount');
         }
         else{
             return 0;
@@ -50,40 +55,7 @@ class Helper{
     }
 
 
-    // Wishlist Count
-    public static function wishlistCount($user_id=''){
-       
-        if(Auth::check()){
-            if($user_id=="") $user_id=auth()->user()->id;
-            return Wishlist::where('user_id',$user_id)->where('cart_id',null)->sum('quantity');
-        }
-        else{
-            return 0;
-        }
-    }
-
-    public static function totalWishlistPrice($user_id=''){
-        if(Auth::check()){
-            if($user_id=="") $user_id=auth()->user()->id;
-            return Wishlist::where('user_id',$user_id)->where('cart_id',null)->sum('amount');
-        }
-        else{
-            return 0;
-        }
-    }
-
-    // Total price with shipping and coupon
-    public static function grandPrice($id,$user_id){
-        $order=Order::find($id);
-        dd($id);
-        if($order){
-            $shipping_price=(float)$order->shipping->price;
-            $order_price=self::orderPrice($id,$user_id);
-            return number_format((float)($order_price+$shipping_price),2,'.','');
-        }else{
-            return 0;
-        }
-    }
+   
 
 
 

@@ -116,9 +116,9 @@
                                             <b>Résumé de la commande </b>
                                         </h6>
                                         Montant total : <br>
-                                        <b>{{ $commande->montant() }} DT</b>
-                                        @if ($commande->frais)
-                                            ( Frais de livraison inclu ( {{ $commande->frais ?? 0 }} DT) ) .
+                                        <b>{{ $commande->montant()  }} DT</b>
+                                        @if ($commande->transport->frais)
+                                            ( Frais de livraison inclu ( {{ $commande->transport->frais ?? 0 }} DT) ) .
                                         @endif
                                         @if ($commande->coupon)
                                         ( Le code promo est appliqué d'une valeur de  ( {{ $commande->coupon ?? 0 }} DT) ) .

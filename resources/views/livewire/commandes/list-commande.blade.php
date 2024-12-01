@@ -1,4 +1,5 @@
 <div>
+
     <form wire:submit="filtrer">
         <div class="row">
             <div class="col-sm-4">
@@ -34,7 +35,7 @@
                         <option value="">Etat</option>
                         <option value="créé">Créé</option>
                         <option value="traitement">Traitement</option>
-                    {{--     <option value="Livraison">Livraison</option> --}}
+                        {{--     <option value="Livraison">Livraison</option> --}}
                         <option value="livrée">Livré</option>
                         <option value="payée">Payée</option>
                         <option value="planification">Planification de retour</option>
@@ -64,9 +65,10 @@
                     <th>Téléphone</th>
                     <th>Gouvernorat</th>
                     <th>Montant</th>
+                    <th>Transport</th>
                     <th>Statut</th>
                     <th>Mode</th>
-                    <th>Coupon(Valeur)</th>
+                    {{--    <th>Coupon(Valeur)</th> --}}
                     <th>Date</th>
                     <th class="text-end">
                         <span wire:loading>
@@ -125,6 +127,10 @@
                         </td>
                         <td>{{ $commande->montant() }} <x-devise></x-devise> </td>
                         <td>
+                      {{ $commande->transport->frais ?? '' }} 
+
+                        </td>
+                        <td>
                             @can('order_edit')
                                 @if ($commande->statut === 'payée')
                                     <b class="text-success">
@@ -143,30 +149,28 @@
                                     </b>
                                 @else
                                     @if ($commande->etat == 'confirmé')
-
-
-                                    <select class="form-control-sm"
-                                                onchange="confirmStatusChange(event, {{ $commande->id }})"
-                                                data-current-status="{{ $commande->statut }}">
-                                                <option value="créé"
-                                                    {{ $commande->statut === 'créé' ? 'selected' : '' }}>Créé</option>
-                                                <option value="traitement"
-                                                    {{ $commande->statut === 'traitement' ? 'selected' : '' }}>Traitement
-                                                </option>
-                                                <option value="En cours livraison"
-                                                    {{ $commande->statut === 'En cours livraison' ? 'selected' : '' }}>En
-                                                    cours de Livraison</option>
-                                                <option value="livrée"
-                                                    {{ $commande->statut === 'livrée' ? 'selected' : '' }}>Livrée</option>
-                                                <option value="payée"
-                                                    {{ $commande->statut === 'payée' ? 'selected' : '' }}>Payée</option>
-                                                <option value="planification"
-                                                    {{ $commande->statut === 'planification' ? 'selected' : '' }}>
-                                                    Planification retour</option>
-                                                <option value="retournée"
-                                                    {{ $commande->statut === 'retournée' ? 'selected' : '' }}>Retournée
-                                                </option>
-                                            </select>
+                                        <select class="form-control-sm"
+                                            onchange="confirmStatusChange(event, {{ $commande->id }})"
+                                            data-current-status="{{ $commande->statut }}">
+                                            <option value="créé" {{ $commande->statut === 'créé' ? 'selected' : '' }}>
+                                                Créé</option>
+                                            <option value="traitement"
+                                                {{ $commande->statut === 'traitement' ? 'selected' : '' }}>Traitement
+                                            </option>
+                                            <option value="En cours livraison"
+                                                {{ $commande->statut === 'En cours livraison' ? 'selected' : '' }}>En
+                                                cours de Livraison</option>
+                                            <option value="livrée" {{ $commande->statut === 'livrée' ? 'selected' : '' }}>
+                                                Livrée</option>
+                                            <option value="payée" {{ $commande->statut === 'payée' ? 'selected' : '' }}>
+                                                Payée</option>
+                                            <option value="planification"
+                                                {{ $commande->statut === 'planification' ? 'selected' : '' }}>
+                                                Planification retour</option>
+                                            <option value="retournée"
+                                                {{ $commande->statut === 'retournée' ? 'selected' : '' }}>Retournée
+                                            </option>
+                                        </select>
                                         {{-- <select class="form-control-sm"
                                             wire:change="updateStatus({{ $commande->id }}, $event.target.value)">
                                             <option value="créé" {{ $commande->statut === 'créé' ? 'selected' : '' }}>
@@ -220,11 +224,11 @@
                                 {{ $commande->mode }}
                             </span>
                         </td>
-                        <td>@if($commande->coupon)
+                        {{--        <td>@if ($commande->coupon)
                             {{ $commande->coupon }} DT
                             @else
                             ---
-                        @endif</td>
+                        @endif</td> --}}
                         <td>{{ $commande->created_at }} </td>
                         <td style="text-align: right;">
                             <div class="btn-group">

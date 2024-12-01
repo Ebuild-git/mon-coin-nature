@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string("phone")->nullable();
             $table->string("email")->nullable();
             $table->string("pays")->nullable();
+            $table->float('sub_total')->nullable();
+            $table->float('total_amount')->nullable();
+            $table->integer('quantite')->nullable();
             $table->string("gouvernorat")->nullable();
             $table->decimal("frais", 10,3)->nullable();
             $table->unsignedBigInteger('transport_id')->nullable();

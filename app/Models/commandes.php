@@ -40,17 +40,18 @@ class commandes extends Model
     }
 
     public function montant(){
-        $total = $this->frais;
+        $total = $this->transport->frais;
         foreach ($this->contenus as $contenu){
-            if($contenu->produit->free_shipping == true){
-            $total += $contenu->prix_unitaire * $contenu->quantite - $this->frais  ;  
-            }
-            else{
-                $total += $contenu->prix_unitaire * $contenu->quantite   ;
-            }
+            $total += $contenu->prix_unitaire * $contenu->quantite;
         }
         return $total ?? 0;
     }
+    public function transport(){
+        return $this->belongsTo(Transport::class,'tranport_id', 'id');
+    }
+
+
+
 
     public function client(){
         return $this->belongsTo(clients::class, 'phone','phone');

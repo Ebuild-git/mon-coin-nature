@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Contracts\Mail\Mailable;
 use App\Services\PayUService\Exception;
 use Illuminate\Validation\ValidationException;
+use Helper;
 
 use App\Http\Traits\ListGouvernorats ;
 
@@ -111,7 +112,7 @@ class CommandeController extends Controller
       'prenom' => ['nullable', 'string', 'max:255'],
       'email' => 'required',
       'coupon'=>'nullable|numeric',
-      'tranport_id' =>'required|integer|exists:transports,id',
+      'tranport_id' =>'nullable|integer|exists:transports,frais',
     //  'category_id' => 'required|integer|exists:categories,id',
    
      
@@ -152,8 +153,9 @@ if($connecte){
       $order->pays = $request->pays;
       $order->note = $request->note;
      
-     $order->tranport_id=$request->tranport_id;
-  // $order->transport_id=$request->input('transport_id');
+    // $order->tranport_id=$request->tranport_id;
+     $shipping=Transport::where('id',$order['tranport'])->pluck('frais');
+   $order->tranport_id=$request->input('transport');
       $order->gouvernorat = $request->input('gouvernorat');
       $order->mode = $request->input('mode');
       $order->coupon = isset(session('coupon')['value']) ? session('coupon')['value'] : null;
@@ -199,11 +201,15 @@ if($connecte){
       $order->pays = $request->pays;
       $order->note = $request->note;
      
-     $order->tranport_id=$request->tranport_id;
-  // $order->transport_id=$request->input('transport_id');
+  //   $order->tranport_id=$request->tranport_id;
+     $shipping=Transport::where('id',$order['transport_id'])->pluck('frais');
+   $order->tranport_id=$request->input('transport');
       $order->gouvernorat = $request->input('gouvernorat');
       $order->mode = $request->input('mode');
       $order->coupon = isset(session('coupon')['value']) ? session('coupon')['value'] : null;
+
+    //  $order['sub_total']=Helper::montant();
+    //  $order['quantity']=Helper::cartCount();
      // $order->frais = Transport::where('id',$request['transport_id'])->pluck('frais');
      
    //   $order->frais = $configs->frais ?? 0;
@@ -236,6 +242,10 @@ if($connecte){
 
    ]; */
 }
+//dd($order);
+
+
+
 
 
     $order->save();

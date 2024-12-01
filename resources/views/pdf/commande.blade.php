@@ -97,7 +97,7 @@
             </thead>
             <tbody>
                 @php
-                    $total = $commande->frais ?? 0;
+                    $total = $commande->transport->frais ?? 0;
                 @endphp
                 @foreach ($commande->contenus as $item)
                     <tr>
@@ -122,8 +122,8 @@
                         <b> {{ \App\Helpers\TranslationHelper::TranslateText('Frais de livraison') }} </b>
                     </td>
                     <td>1</td>
-                    <td> {{ $commande->frais ?? 0 }} DT </td>
-                    <td> {{ $commande->frais ?? 0 }} DT </td>
+                    <td> {{ $commande->transport->frais ?? 0 }} DT </td>
+                    <td> {{ $commande->transport->frais ?? 0 }} DT </td>
                 </tr>
                 @if($commande->coupon ?? 0)
                 <tr>

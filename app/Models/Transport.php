@@ -22,5 +22,10 @@ class Transport extends Model
          return $this->hasMany(commandes::class, 'tranport_id', 'id');
      }
 
+     public function commandes1()
+{
+    return $this->hasMany(commandes::class);
+}
+
 
 }

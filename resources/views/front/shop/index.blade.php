@@ -181,7 +181,7 @@
 													@foreach ($souscategories as $marque)
 													<li>
 														<label class="checkfield">
-															<input type="checkbox" checked/>
+															<input type="checkbox" />
 															<i></i>
 															{{ $marque->titre }}
 														</label>

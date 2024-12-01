@@ -102,7 +102,7 @@
                 </table>
                 <br>
                 <div>
-                    <b>Frais de livraison :</b> {{ $commande->frais ?? 0 }} <x-devise></x-devise> <br>
+                    <b>Frais de livraison :</b> {{ $commande->transport->frais ?? 0 }} <x-devise></x-devise> <br>
                     <b>Montant a payer :</b> {{ $commande->montant() ?? '/' }} <x-devise></x-devise>
                 </div>
                 <br><br><br>
