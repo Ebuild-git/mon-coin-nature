@@ -8,6 +8,36 @@
     $service = DB::table('services')->get();
     $produit = DB::table('produits')->get();
     @endphp
+
+
+
+<style>
+	.custom-btn.custom-btn--style-1 {
+background-color: transparent
+}
+.custom-btn.custom-btn--style-1:focus,
+.custom-btn.custom-btn--style-1:hover,
+.custom-btn.custom-btn--style-2 {
+background-color: #009640
+}
+
+.custom-btn {
+    border: 2px solid #009640;
+   
+    background-color: transparent;
+  
+   
+  
+}
+
+.custom-btn:hover {
+    background-color: #009640; /* Couleur de fond */
+    border-color: #009640;    /* Couleur de la bordure */
+        /* Couleur du texte */
+     /* Agrandissement léger */
+}
+
+</style>
 {{-- <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -37,6 +67,8 @@
                         <div class="container">
                             <div class="row justify-content-end">
                                 <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7">
+								<br>
+								<br>
                                     <h2 class="__title"><span>  {{ \App\Helpers\TranslationHelper::TranslateText($banner->titre ?? ' ') }} </span></h2>
 <br>
                                     <p style="color: #ffffff">
@@ -129,24 +161,24 @@
 						<script>
 							$(document).ready(function() {
 								$('.category-slider').slick({
-									infinite: true, // Activer la boucle
-									slidesToShow: 3, // Nombre d'éléments affichés
-									slidesToScroll: 1, // Nombre d'éléments défilés par clic
-									autoplay: true, // Activer le défilement automatique
-									autoplaySpeed: 2000, // Vitesse de défilement automatique (en ms)
-									arrows: false, // Afficher les flèches de navigation
-									dots: false, // Afficher les points de navigation
+									infinite: true, 
+									slidesToShow: 5, 
+									slidesToScroll: 1, 
+									autoplay: true, 
+									autoplaySpeed: 2000, 
+									arrows: false, 
+									dots: false, 
 
 
 									responsive: [
 										{
-											breakpoint: 768, // Écrans de taille moyenne
+											breakpoint: 768, 
 											settings: {
 												slidesToShow: 2
 											}
 										},
 										{
-											breakpoint: 480, // Petits écrans
+											breakpoint: 480, 
 											settings: {
 												slidesToShow: 1
 											}
@@ -380,8 +412,9 @@
 														
                                     </span>
                                 </div>
-
-										<a class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{\App\Helpers\TranslationHelper::TranslateText('Ajouter au panier')}}</a>
+							
+ 
+										<a style="font-size: 10px;" class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{!!  App\Helpers\TranslationHelper::TranslateText('Ajouter au panier') !!}</a>
 									</div>
 									@if ($produit->inPromotion())
 									<span class="product-label product-label--sale">-{{ $produit->inPromotion()->pourcentage }}%</span>
@@ -390,24 +423,13 @@
 								</div>
                                 @endif
                                 @endforeach
-                                <!-- end item -->
-								<!-- end item -->
-
+                           
 							</div>
 						</div>
-						<!-- end goods -->
+					
 					</div>
 				</section>
-				<!-- end section -->
-
-				<!-- start section -->
 			
-				<!-- end section -->
-
-				<!-- start section -->
-			
-
-				<!-- start section -->
 				<section class="section section--no-pt">
 					<div class="container">
 						<div class="special-offer special-offer--style-2" data-aos="zoom-in" data-aos-duration="600" data-aos-offset="70">
@@ -475,7 +497,7 @@
 												@endif
 												</div>
 
-												<a class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{\App\Helpers\TranslationHelper::TranslateText('Ajouter au panier')}}</a>
+												<a  style="font-size: 10px;" class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{\App\Helpers\TranslationHelper::TranslateText('Ajouter au panier')}}</a>
 										</div>
 
 											@if ($produit->inPromotion())
@@ -557,7 +579,7 @@
 												
 													</div>
 	
-													<a class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{\App\Helpers\TranslationHelper::TranslateText('Ajouter au panier')}}</a>
+													<a  style="font-size: 10px;" class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{\App\Helpers\TranslationHelper::TranslateText('Ajouter au panier')}}</a>
 												</div>
 	
 												@if ($produit->inPromotion())
@@ -578,93 +600,11 @@
 					</section>
 					<!-- end section -->
 
-				
-				{{-- <section class="section section--review  lazy" data-src="img/review_bg_1.png">
-					<div class="container">
-						<div class="section-heading section-heading--center" data-aos="fade">
-							<h2 class="__title">{{ \App\Helpers\TranslationHelper::TranslateText('Témoignages') }}</span></h2>
-
-							<p>" {{ \App\Helpers\TranslationHelper::TranslateText('Les retours de nos clients') }}"</p>
-						</div>
-
-						
-						<div class="review review--slider">
-							<div class="js-slick" data-slick='{"autoplay": true, "arrows": false, "dots": true, "speed": 1000}'>
-								
-								@if ($testimonials->isEmpty())
-								<p> {{ \App\Helpers\TranslationHelper::TranslateText('Aucun témoignage disponible') }}.</p>
-								@else
-								@foreach ($testimonials as $testimonial)
-								<div class="review__item">
-									<div class="review__item__text">
-										<p>
-											<i>“
-												{!! \App\Helpers\TranslationHelper::TranslateText($testimonial->message) !!}
-												“
-											</i>
-										</p>
-									</div>
-
-									<div class="review__item__author  d-table">
-										<div class="d-table-cell align-middle">
-											<div class="review__item__author-image">
-												@if ($testimonial->photo)
-												<img class="circled" src="{{ asset('uploads/testimonials/' . $testimonial->photo) }}" alt="Photo Témoignage" width="100" height="100">
-												@else
-
-												<img class="circled" src="img/ava.png" alt="ava" />
-												@endif
-											</div>
-										</div>
-
-										<div class="d-table-cell align-middle">
-											<span class="review__item__author-name"><strong>{{ $testimonial->name }}</strong></span>
-										
-										</div>
-									</div>
-								</div>
-								@endforeach
-								@endif
-							
-							</div>
-						</div>
-						
-
-						<div class="col-12 d-flex justify-content-center">
-							<div class="form-group mb--0">
-								<button class="axil-btn btn-bg-primary2" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">
-									<span> {{ \App\Helpers\TranslationHelper::TranslateText('Laisser un témoignage') }}</span>
-								</button>
-							</div>
 			
-						</div>
-			
-			
-						<div id="successMessage" class="alert alert-success" style="display:none;"></div>
-						<div id="errorMessage" class="alert alert-danger" style="display:none;"></div>
-			
-
-					</div>
-
-					
-				</section>
-			 --}}
-
 				
 
 			
 			</main>
-			<!-- end main -->
-
-			<!-- start footer -->
-			
-			<!-- end footer -->
-	{{-- 	</div> --}}
-
-	{{-- </body>
-</html>
- --}}
-
 
  
         <!-- Modal -->

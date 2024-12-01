@@ -93,15 +93,8 @@ class CommandeController extends Controller
 
    $transports = Transport ::all();
 
-   //dd($transports);
-
     return view('front.commandes.checkout', compact('configs', 'paniers', 'total','gouvernorats','transports'));
   }
-
-
-
-
-
 
 
   public function confirmOrder(Request $request)
@@ -112,19 +105,12 @@ class CommandeController extends Controller
       'prenom' => ['nullable', 'string', 'max:255'],
       'email' => 'required',
       'coupon'=>'nullable|numeric',
-      'transport_id' =>'nullable|integer|exists:transports,frais',
-    //  'category_id' => 'required|integer|exists:categories,id',
-   
-     
+      'transport_id' =>'nullable|integer|exists:transports,frais',    
         'phone' => 'required',
-    
-
     ]); 
-
 
     $connecte = Auth::user();
     $configs = config::firstOrFail();
-
     $total = 0;
     
     if (session()->has('coupon')) {
@@ -134,15 +120,7 @@ class CommandeController extends Controller
      
     }
 
-   // $shipping=Transport::where('id',$order_data['shipping_id'])->pluck('price');
-//dd($shipping);
-
-//dd($discuont);
 if($connecte){
-
-
-
-  
   $order = new commandes();
   $order->user_id = $connecte->id;
       $order->nom = $request->nom;
@@ -150,46 +128,12 @@ if($connecte){
       $order->email = $request->email;
       $order->adresse = $request->adresse;
       $order->phone = $request->phone;
-      $order->pays = $request->pays;
       $order->note = $request->note;
-     
-    // $order->tranport_id=$request->tranport_id;
-     $shipping=Transport::where('id',$order['tranport'])->pluck('frais');
-   $order->transport_id=$request->input('transport');
+      $order->transport_id=$request->input('transport');
       $order->gouvernorat = $request->input('gouvernorat');
       $order->mode = $request->input('mode');
       $order->coupon = isset(session('coupon')['value']) ? session('coupon')['value'] : null;
-/*   $order = new commandes([
 
-    'user_id' => auth()->user()->id,
-     'nom' => $request->input('nom'),
-     'prenom' => $request->input('prenom'),
-     'email' => $request->input('email'),
-     'adresse' => $request->input('adresse'),
-     'phone' => $request->input('phone'),
-     'pays' => $request->input('pays'),
-     'note' => $request->input('note'),
-
-     'transport_id'=>$request->input('transport_id'),
-
- 
-     'frais'=>Transport::where('id',$request['shipping_id'])->pluck('frais'),
-     'gouvernorat' => $request->input('gouvernorat'),
-     'mode' => $request->input('mode'),
-     'coupon' => isset(session('coupon')['value']) ? session('coupon')['value'] : null,
-
-    
-    
-
-    
-
-   ]);[
-     'email.required' => 'Veuillez entrer votre email',
-     'nom.required' => 'Veuillez entrer votre nom',
-     'phone.required' => 'Veuillez entrer votre numéro de téléphone',
-     'adresse.required' => 'Veuillez entrer votre addresse',
-
-   ]; */
 } else{
 
   $order = new commandes();
@@ -198,77 +142,28 @@ if($connecte){
       $order->email = $request->email;
       $order->adresse = $request->adresse;
       $order->phone = $request->phone;
-      $order->pays = $request->pays;
       $order->note = $request->note;
-     
-  //   $order->tranport_id=$request->tranport_id;
-     $shipping=Transport::where('id',$order['transport_id'])->pluck('frais');
-   $order->transport_id=$request->input('transport');
+      $order->transport_id=$request->input('transport');
       $order->gouvernorat = $request->input('gouvernorat');
       $order->mode = $request->input('mode');
       $order->coupon = isset(session('coupon')['value']) ? session('coupon')['value'] : null;
-
-    //  $order['sub_total']=Helper::montant();
-    //  $order['quantity']=Helper::cartCount();
-     // $order->frais = Transport::where('id',$request['transport_id'])->pluck('frais');
-     
-   //   $order->frais = $configs->frais ?? 0;
-   //   $order->tax = $configs->tax ?? 0;
-
-/*   $order = new commandes([
-
-
-     'nom' => $request->input('nom'),
-     'prenom' => $request->input('prenom'),
-     'email' => $request->input('email'),
-     'adresse' => $request->input('adresse'),
-     'phone' => $request->input('phone'),
-     'pays' => $request->input('pays'),
-     'note' => $request->input('note'),
-     'frais' => $configs->frais ?? 0,
-    'transport_id'=>$request->input('transport_id'),
-
-     'frais'=>Transport::where('id',$request['shipping_id'])->pluck('frais'),
-     'gouvernorat' => $request->input('gouvernorat'),
-     'mode' => $request->input('mode'),
-  
-  'coupon' => isset(session('coupon')['value']) ? session('coupon')['value'] : null,
-
-   ]);[
-     'email.required' => 'Veuillez entrer votre email',
-     'nom.required' => 'Veuillez entrer votre nom',
-     'phone.required' => 'Veuillez entrer votre numéro de téléphone',
-     'adresse.required' => 'Veuillez entrer votre addresse',
-
-   ]; */
 }
-//dd($order);
-
-
-
-
 
     $order->save();
 
-   $user = new User([
-     
+   $user = new User([    
     'nom' => $request->input('nom'),
     'prenom' => $request->input('prenom'),
     'email' => $request->input('email'),
     'password' => Hash::make($request->input('phone')),
-   
     'phone' => $request->input('phone'),
   ]);
-
-
 
   $existingUsersWithEmail = User::where('email', $request['email'])->exists();
 
   if (!$existingUsersWithEmail) {
    
     Mail::to($user->email)->send(new FirstOrder($user));
-
- 
     $user->save();
 }
  

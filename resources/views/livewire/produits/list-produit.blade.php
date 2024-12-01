@@ -74,7 +74,7 @@
                                 {{ $produit->stock > 0 ? 'En stock' : 'Rupture' }}
                             </span> --}}
 
-                            @if ($produit->stock > 20)
+                            @if ($produit->stock > 0)
                                 <!-- Icône pour en stock -->
                                 <span class="text-success" title="En Stock">
                                     <i class="fas fa-check-circle"></i>
@@ -83,18 +83,13 @@
                                 </span>
                             @endif
 
-                            @if ($produit->stock < 20 && $produit->stock > 0)
-                                <!-- Seuil pour l'alerte -->
-                                {{ $produit->stock }} U.
-                                <span class="badge badge-yellow" title="{{ $produit->stock }} Produit(s) en stock pour le moment"  style="background-color: rgb(222, 222, 19) ;  color: rgb(252, 253, 251);">Alerte Stock Bas</span>
-                            @endif
-
+                    
 
                             @if ($produit->stock == 0)
                                 <!-- Icône pour rupture de stock -->
                                 <span class="text-danger" title="Rupture de Stock">
                                     <i class="fas fa-times-circle"></i>
-                                    <span class="badge badge-danger">Pas de solde</span>
+                                    <span class="badge badge-danger">Pas de stock</span>
                                 </span>
                             @endif
                         </td>

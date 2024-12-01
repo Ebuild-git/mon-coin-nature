@@ -26,18 +26,19 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
 
                     <div class="form-check form-switch">
 
                         <input name="sur_devis" class="form-check-input" class="switch" type="checkbox" id="valable"
                             wire:model.lazy="valable" wire:click="valable">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">valable</label>
+                        <label class="form-check-label" for="flexSwitchCheckDefault"> Afficher l'aticle</label>
                         @error('valable')
                             <span class="text-danger small"> {{ $message }} </span>
                         @enderror
                     </div>
                 </div>
+
 
                 <div class="col-sm-2">
 
@@ -52,26 +53,29 @@
                     </div>
                 </div>
 
-                <div class="col-sm-2">
+            </div>
+            <div class="row">
+
+                <div class="col-sm-6">
 
                     <div class="form-check form-switch">
 
                         <input name="cmd0" class="form-check-input" class="switch" type="checkbox" id="cmd0"
                             wire:model.lazy="cmd0" wire:click="cmd0">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">CMD 0</label>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Commande autorisée si le stock est nul</label>
                         @error('cmd0')
                             <span class="text-danger small"> {{ $message }} </span>
                         @enderror
                     </div>
                 </div>
 
-                <div class="col-sm-2">
+                <div class="col-sm-6">
 
                     <div class="form-check form-switch">
 
                         <input name="vo" class="form-check-input" class="switch" type="checkbox" id="cmd0"
                             wire:model.lazy="vo" wire:click="vo">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">V0</label>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Afficher l'article même si le stock est nul</label>
                         @error('vo')
                             <span class="text-danger small"> {{ $message }} </span>
                         @enderror
@@ -125,7 +129,7 @@
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>
-                <div class="col-sm-6 mb-3">
+               {{--  <div class="col-sm-6 mb-3">
                     <label for="">Marque </label>
                     <select wire:model='marque_id' class="form-control @error('marque_id') is-invalid @enderror">
                         <option value=""></option>
@@ -136,7 +140,7 @@
                     @error('marque_id')
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
-                </div>
+                </div> --}}
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="">Prix de vente</label>

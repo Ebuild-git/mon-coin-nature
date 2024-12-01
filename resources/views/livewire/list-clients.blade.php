@@ -60,27 +60,23 @@
                             <td class="cusor">
                             
     
-                                @if ($client->solde > 500)
+                                @if ($client->solde > 0)
                                     <!-- Icône pour en solde -->
                                     <span class="text-success" title="En solde">
                                        {{--  <i class="fas fa-check-circle"></i> --}}
                                         <span class="badge badge-success">En solde</span>
-                                        {{ $client->solde }} U.
+                                        {{ $client->solde }} DT
                                     </span>
                                 @endif
     
-                                @if ($client->solde < 500 && $client->solde > 0)
-                                    <!-- Seuil pour l'alerte -->
-                                    {{ $client->solde }} U.
-                                    <span class="badge badge-yellow" title="{{ $client->solde }} client(s) en solde pour le moment"  style="background-color: rgb(222, 222, 19) ;  color: rgb(252, 253, 251);">Alerte solde Bas</span>
-                                @endif
+                               
     
     
                                 @if ($client->solde == 0)
                                     <!-- Icône pour rupture de solde -->
                                     <span class="text-danger" title="Rupture de solde">
                                        {{--  <i class="fas fa-times-circle"></i> --}}
-                                        <span class="badge badge-danger">Rupture</span>
+                                        <span class="badge badge-danger">Pas de solde</span>
                                     </span>
                                 @endif
                             </td>

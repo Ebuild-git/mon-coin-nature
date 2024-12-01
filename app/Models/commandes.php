@@ -47,7 +47,7 @@ class commandes extends Model
         return $total ?? 0;
     }
     public function transport(){
-        return $this->belongsTo(Transport::class,'tranport_id', 'id');
+        return $this->belongsTo(Transport::class,'transport_id', 'id');
     }
 
 
@@ -71,6 +71,6 @@ class commandes extends Model
         return $this->belongsTo(User::class);
     }
     public function shipping(){
-        return $this->belongsTo(Transport::class,'tranport_id', 'id')->withDefault();
+        return $this->belongsTo(Transport::class,'transport_id', 'id')->withDefault();
     }
 }

@@ -105,7 +105,7 @@ public $sous_categories = array();
             'livrable' => 'nullable|boolean',
             'valable' => 'nullable|boolean',
             'bonne_affaires' => 'nullable',
-            'marque_id' => 'nullable|integer|exists:marques,id',
+          //  'marque_id' => 'nullable|integer|exists:marques,id',
          //  'marque_id' => 'nullable|integer|exists:marques,id',
         ]);
         ;[
@@ -143,7 +143,7 @@ public $sous_categories = array();
 
         $produit->category_id = $this->category_id;
         $produit->sous_category_id = $this->sous_category_id;
-        $produit->marque_id = $this->marque_id;
+      //  $produit->marque_id = $this->marque_id;
 
 
 
@@ -179,7 +179,7 @@ public $sous_categories = array();
                 'prix_achat' => 'required|numeric',
                 'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp',
                 'photos.*' => 'nullable|image|mimes:jpg,jpeg,png,webp',
-               'marque_id' => 'nullable|integer|exists:marques,id',
+             //  'marque_id' => 'nullable|integer|exists:marques,id',
                 'category_id' => 'required|integer|exists:categories,id',
                 'sous_category_id' => 'required|integer|exists:sous_categories,id',
                 'free_shipping' => 'nullable|boolean',
@@ -199,7 +199,7 @@ public $sous_categories = array();
         
             $this->produit->prix = $this->prix;
             $this->produit->prix_achat = $this->prix_achat;
-            $this->produit->marque_id = $this->marque_id;
+           // $this->produit->marque_id = $this->marque_id;
             $this->produit->category_id = $this->category_id;
             $this->produit->sous_category_id = $this->sous_category_id;
             $this->produit->free_shipping = $this->free_shipping;

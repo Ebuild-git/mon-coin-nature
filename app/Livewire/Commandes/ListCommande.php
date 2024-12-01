@@ -61,7 +61,7 @@ class ListCommande extends Component
         $this->gouvernoratsTunisie = $this->getListGouvernorat();
         
     
-     //   dd($commandes);
+     //  dd($commandes);
         return view('livewire.commandes.list-commande', compact("commandes", "total"));
     }
 

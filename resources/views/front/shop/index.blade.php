@@ -9,8 +9,53 @@
             $service = DB::table('services')->get();
             $produit = DB::table('produits')->get();
         @endphp
+
+
+
 	<body class="woocommerce-page catalog-page">
 		<div id="app">
+
+			
+<style>
+	.custom-btn.custom-btn--style-1 {
+background-color: transparent
+}
+.custom-btn.custom-btn--style-1:focus,
+.custom-btn.custom-btn--style-1:hover,
+.custom-btn.custom-btn--style-2 {
+background-color: #009640
+}
+.__item {
+    border: 2px solid #009640;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.__item:hover {
+    border-color: #009640;
+}
+
+/* .__image img {
+    border: 2px solid #009640;
+    border-radius: 4px;
+} */
+.custom-btn {
+    border: 2px solid #009640;
+   
+    background-color: transparent;
+  
+   
+  
+}
+
+.custom-btn:hover {
+    background-color: #009640; /* Couleur de fond */
+    border-color: #009640;    /* Couleur de la bordure */
+        /* Couleur du texte */
+     /* Agrandissement léger */
+}
+
+</style>
 			<!-- start header -->
 			<!-- start hero -->
             <br>
@@ -25,9 +70,6 @@
 <p>
 	{{ \App\Helpers\TranslationHelper::TranslateText('Explorez tous les produits') }}
 </p>
-							{{-- <p>
-								The point of using is that it has a more-or-less normal distribution of letters, as opposed to using Content here content here making it look
-							</p> --}}
 						</div>
 					</div>
 				</div>
@@ -190,24 +232,7 @@
 
 												</ul>
 											</div>
-											<!-- end widget -->
-
-											<!-- start widget -->
-											{{-- <div class="widget widget--tags">
-												<h4 class="h6 widget-title">Popular Tags</h4>
-
-												<ul>
-													<li><a href="#">Art</a></li>
-													<li><a href="#">design</a></li>
-													<li><a href="#">concept</a></li>
-													<li><a href="#">Media</a></li>
-													<li><a href="#">Photography</a></li>
-													<li><a href="#">UI</a></li>
-												</ul>
-											</div> --}}
-											<!-- end widget -->
-
-											<!-- start widget -->
+									
 											<div class="widget">
 												<div class="row no-gutters align-items-center">
 													{{-- <div class="col">
@@ -302,11 +327,10 @@
 
 									<div class="spacer py-3"></div>
 
-									<!-- start goods -->
 									<div class="goods goods--style-1">
 										<div class="__inner">
 											<div class="row">
-												<!-- start item -->
+											
 												@if ($produits)
 
 												@foreach ($produits as $key => $produit)
@@ -351,7 +375,7 @@
 																
 															</div>
 
-															<a class="custom-btn custom-btn--medium custom-btn--style-1"  onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i> {{ \App\Helpers\TranslationHelper::TranslateText('Ajouter au panier') }}</a>
+															<a style="font-size: 10px;" class="custom-btn custom-btn--medium custom-btn--style-1"  onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i> {{ \App\Helpers\TranslationHelper::TranslateText('Ajouter au panier') }}</a>
 														</div>
 														@if ($produit->inPromotion())
 														<span class="product-label product-label--sale"> -{{ $produit->inPromotion()->pourcentage }}%</span>
@@ -361,37 +385,33 @@
 												    @endif
 												@endforeach
 												@endif
-												<!-- end item -->
+											
 
 											
 											</div>
 										</div>
 									</div>
-									<!-- end goods -->
+								
 
 									<div class="spacer py-5"></div>
 
-									<!-- start pagination -->
+									
 									<nav aria-label="Page navigation example">
 										<ul class="pagination justify-content-center">
 											{{ $produits->links('pagination::bootstrap-4') }}	
 										</ul>
 									</nav>
-									<!-- end pagination -->
+									
 								</div>
 							</div>
 						</div>
-						<!-- end goods catalog -->
+						
 
 					</div>
 				</section>
-				<!-- end section -->
-
-				<!-- start section -->
-			
-				<!-- end section -->
+				
 			</main>
-			<!-- end main -->
+			
 
 
 </main>
