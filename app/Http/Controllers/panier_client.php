@@ -122,13 +122,13 @@ class panier_client extends Controller
 
 
         //verifier que le stock demander est disponible
-     /*    if ($produit->stock < $quantite) {
+        if ($produit->stock == 0 && $produit->cmd0 ==false) {
             return response()->json([
                 'statut' => false,
-                'message' => "Quantité insuffisante en stock !",
+                'message' => "Commande non autorisée !",
             ]);
         }
- */
+ 
        
 
 

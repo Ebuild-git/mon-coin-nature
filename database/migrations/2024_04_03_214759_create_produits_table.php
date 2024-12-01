@@ -37,6 +37,10 @@ return new class extends Migration
             $table->boolean('vo')->default(false);
             $table->boolean('livrable')->default(false);
             $table->boolean('bonne_affaires')->default(false);
+
+            $table->string("tailles")->nullable();
+            $table->boolean('cmd0')->default(false);
+            $table->boolean('vble')->default(false);
             $table->softDeletes();
             $table->timestamps();
 

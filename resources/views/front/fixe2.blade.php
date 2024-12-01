@@ -165,6 +165,7 @@ $produit = DB::table('produits')->get();
                                         <li class="li-profile">
                                             <a href="{{ url('login') }}"><i class="fontello-profile"></i></a>
                                         </li>
+                                       
 
                                         @else
                                     

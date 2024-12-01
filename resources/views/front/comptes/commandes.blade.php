@@ -126,7 +126,7 @@
                                                                         <a  href="{{ route('print_commande',['id'=> $commande->id ]) }}" class="axil-btn btn-bg-primary2">
                                                                             
                                                                             <img width="20" height="20" src="https://img.icons8.com/wired/20/FFFFFF/bill.png" alt="bill"/>
-                                                                            Factureddddd</a>
+                                                                            Facture</a>
                                                                     </td>
                                                                    
                                                                 </tr>

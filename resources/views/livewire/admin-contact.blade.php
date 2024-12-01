@@ -90,7 +90,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-sm-6">
+           {{--  <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="">Frais de livraison</label>
                     <input type="number" wire:model="frais" step="0.1" class="form-control">
@@ -98,7 +98,7 @@
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="">Email</label>
@@ -122,6 +122,36 @@
                     <label for="">Addresse</label>
                     <input type="text" wire:model="addresse" step="0.1" class="form-control">
                     @error('addresse')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="">Facebook</label>
+                    <input type="text" wire:model="facebook" step="0.1" class="form-control">
+                    @error('facebook')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="">Linkedin</label>
+                    <input type="text" wire:model="linkedin" step="0.1" class="form-control">
+                    @error('linkedin')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="">Instagram</label>
+                    <input type="text" wire:model="instagram" step="0.1" class="form-control">
+                    @error('instagram')
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>

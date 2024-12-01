@@ -32,7 +32,10 @@ class AdminContact extends Component
         $image3,$image32,
         $image4,$image42,
         $image5,$image52,
-        $image6,$image62;
+        $image6,$image62,
+        $facebook,       
+        $instagram,
+        $linkedin;
 
   
     public function mount(){
@@ -83,6 +86,11 @@ class AdminContact extends Component
         $this->titre_apropos2 = $config->titre_apropos2;
         $this->des_apropos2 = $config->des_apropos2;
 
+        $this->facebook = $config->facebook;
+        $this->instagram = $config->instagram;
+        $this->linkedin = $config->linkedin;
+
+
 
 
 
@@ -106,6 +114,7 @@ class AdminContact extends Component
             'email' => 'nullable',
             'addresse' => 'nullable|string',
             'description' => 'nullable|string|max:1000',
+
         ]);
 
         // update the user
@@ -311,6 +320,11 @@ class AdminContact extends Component
         $config->email = $this->email;
         $config->addresse = $this->addresse;
         $config->description = $this->description;
+        $config->facebook = $this->facebook;
+        $config->instagram = $this->instagram;
+    
+        $config->linkedin = $this->linkedin;
+
 
      //   $config->annee = $this->annee;
         $config->des_annee = $this->des_annee;
@@ -330,6 +344,8 @@ class AdminContact extends Component
 
         $config->titre_apropos2 = $this->titre_apropos2;
         $config->des_apropos2 = $this->des_apropos2;
+
+
 
        
 

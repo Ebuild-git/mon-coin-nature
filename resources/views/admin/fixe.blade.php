@@ -163,6 +163,36 @@
 
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon icon-color-3"> <i class="ri-list-ordered"></i>
+                            </div>
+                            <div class="menu-title">
+                                Les sous categories
+                            </div>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="{{ route('sous_categories') }}">
+                                    <i class="bx bx-right-arrow-alt"></i>
+                                    Liste des sous categories
+                                </a>
+                            </li>
+                           {{--  <li>
+                                <a href="{{ route('sous_categories') }}">
+                                    <i class="bx bx-right-arrow-alt"></i>
+                                    Créer une sous  categorie
+                                </a>
+                            </li> --}}
+    
+    
+                        </ul>
+    
+                     
+                      
+    
+                    </li>
                 @endcan
 
                 <li>

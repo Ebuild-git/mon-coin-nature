@@ -70,6 +70,13 @@ return new class extends Migration
             $table->string('image4')->nullable()->default(null);
             $table->string('image5')->nullable()->default(null);
             $table->string('image6')->nullable()->default(null);
+
+
+            $table->string("facebook")->nullable();
+         
+            $table->string("instagram")->nullable();
+          
+            $table->string("linkedin")->nullable();
             $table->timestamps();
         });
 

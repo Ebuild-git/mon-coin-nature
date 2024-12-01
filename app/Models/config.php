@@ -67,6 +67,9 @@ class config extends Model
         'image4',
         'image5',
         'image6',
+        'facebook',       
+        'instagram' ,
+        'linkedin',
         
     ];
 }

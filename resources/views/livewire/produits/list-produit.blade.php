@@ -94,7 +94,7 @@
                                 <!-- Icône pour rupture de stock -->
                                 <span class="text-danger" title="Rupture de Stock">
                                     <i class="fas fa-times-circle"></i>
-                                    <span class="badge badge-danger">Rupture</span>
+                                    <span class="badge badge-danger">Pas de solde</span>
                                 </span>
                             @endif
                         </td>

@@ -475,8 +475,8 @@
 												@endif
 												</div>
 
-												<a class="custom-btn custom-btn--medium custom-btn--style-1" href="#"><i class="fontello-shopping-bag"></i>Add to cart</a>
-											</div>
+												<a class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{\App\Helpers\TranslationHelper::TranslateText('Ajouter au panier')}}</a>
+										</div>
 
 											@if ($produit->inPromotion())
 											<span class="product-label product-label--sale">-{{ $produit->inPromotion()->pourcentage }}%</span>
@@ -542,14 +542,22 @@
 															<span class="product-price__item product-price__item--old">
 															   {{ $produit->prix }} DT
 															</span>
+
+															@else
+
 	
 	
+														<span class="product-price__item product-price__item--new">
+                                                            {{ $produit->getPrice() }} <x-devise></x-devise>
+                                                            </b></span>
+                                                        @endif
+
 													
 												 
-													@endif
+												
 													</div>
 	
-													<a class="custom-btn custom-btn--medium custom-btn--style-1" href="#"><i class="fontello-shopping-bag"></i>Add to cart</a>
+													<a class="custom-btn custom-btn--medium custom-btn--style-1" onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i>{{\App\Helpers\TranslationHelper::TranslateText('Ajouter au panier')}}</a>
 												</div>
 	
 												@if ($produit->inPromotion())

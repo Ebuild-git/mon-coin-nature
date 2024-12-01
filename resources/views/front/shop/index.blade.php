@@ -133,7 +133,7 @@
 													<li class="list__item">
 														<a class="list__item__link"  href="/category/{{ $category->id }}"
                                                             class="{{ isset($current_category) && $current_category->id === $category->id ? 'selected' : '' }}">  {{ \App\Helpers\TranslationHelper::TranslateText( Str::limit($category->nom, 25)) }}</a>
-														<span>({{ $category->produits->count() }})</span>
+														{{-- <span>({{ $category->produits->count() }})</span> --}}
 													</li>
 													@endforeach
 
@@ -310,6 +310,7 @@
 												@if ($produits)
 
 												@foreach ($produits as $key => $produit)
+												@if($produit->valable == true)
 												<div class="col-12 col-sm-6 col-lg-4">
 													<div class="__item">
 														<figure class="__image">
@@ -322,11 +323,10 @@
 														
 															<div class="product-price">
 																<span class="product-price__item product-price__item--new">
-	
 																	@if ($produit->inPromotion())
-                                                   
-                                                      
-
+													   
+														  
+	
 																	<span class="product-price__item product-price__item--new">
 																		{{ $produit->getPrice() }} DT
 																	</span>
@@ -338,12 +338,17 @@
 																		<span class="product-price__item product-price__item--old">
 																		   {{ $produit->prix }} DT
 																		</span>
+			
+																		@else
+			
 				
 				
+																	<span class="product-price__item product-price__item--new">
+																		{{ $produit->getPrice() }} <x-devise></x-devise>
+																		</b></span>
+																	@endif
+			
 																
-															 
-																@endif
-																</span>
 															</div>
 
 															<a class="custom-btn custom-btn--medium custom-btn--style-1"  onclick="AddToCart( {{ $produit->id }} )"><i class="fontello-shopping-bag"></i> {{ \App\Helpers\TranslationHelper::TranslateText('Ajouter au panier') }}</a>
@@ -353,6 +358,7 @@
 													@endif
 													</div>
 												</div>
+												    @endif
 												@endforeach
 												@endif
 												<!-- end item -->

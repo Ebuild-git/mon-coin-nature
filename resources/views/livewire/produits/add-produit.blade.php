@@ -10,17 +10,72 @@
 
     <div class="row">
         <div class="col-sm-8">
-<br>
-            <div class="col-sm-8"> 
+            <br>
+            <div class="row">
 
-                <div class="form-check form-switch">
-    
-                    <input name="sur_devis" class="form-check-input"  class="switch"   type="checkbox" id="sur_devis" wire:model.lazy="free_shipping"
-                       wire:click="free_shipping">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Bonne affaire</label>
-                    @error('free_shipping')
-                        <span class="text-danger small"> {{ $message }} </span>
-                    @enderror
+
+                <div class="col-sm-3">
+
+                    <div class="form-check form-switch">
+
+                        <input name="sur_devis" class="form-check-input" class="switch" type="checkbox" id="sur_devis"
+                            wire:model.lazy="free_shipping" wire:click="free_shipping">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Bonne affaire</label>
+                        @error('free_shipping')
+                            <span class="text-danger small"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-sm-2">
+
+                    <div class="form-check form-switch">
+
+                        <input name="sur_devis" class="form-check-input" class="switch" type="checkbox" id="valable"
+                            wire:model.lazy="valable" wire:click="valable">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">valable</label>
+                        @error('valable')
+                            <span class="text-danger small"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+
+                    <div class="form-check form-switch">
+
+                        <input name="livrable" class="form-check-input" class="switch" type="checkbox" id="valable"
+                            wire:model.lazy="livrable" wire:click="livrable">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Livrable</label>
+                        @error('livrable')
+                            <span class="text-danger small"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+
+                    <div class="form-check form-switch">
+
+                        <input name="cmd0" class="form-check-input" class="switch" type="checkbox" id="cmd0"
+                            wire:model.lazy="cmd0" wire:click="cmd0">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">CMD 0</label>
+                        @error('cmd0')
+                            <span class="text-danger small"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+
+                    <div class="form-check form-switch">
+
+                        <input name="vo" class="form-check-input" class="switch" type="checkbox" id="cmd0"
+                            wire:model.lazy="vo" wire:click="vo">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">V0</label>
+                        @error('vo')
+                            <span class="text-danger small"> {{ $message }} </span>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <br>
@@ -41,15 +96,32 @@
 
 
             <div class="row">
+
                 <div class="col-sm-6 mb-3">
-                    <label for="">Categorie </label>
-                    <select wire:model='category_id' class="form-control @error('category_id') is-invalid @enderror">
-                        <option value=""></option>
+                    <label for="category">Raryon :</label>
+                    <select wire:model="category_id" wire:change="loadSubCategories" id="category"
+                        class="form-control @error('category_id') is-invalid @enderror">
+                        <option value="">Choisir un rayon</option>
                         @foreach ($categories as $cat)
                             <option value="{{ $cat->id }}">{{ $cat->nom }}</option>
                         @endforeach
                     </select>
                     @error('category_id')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+
+
+                <div class="col-sm-6 mb-3">
+                    <label for="sub_category">Famille :</label>
+                    <select wire:model="sous_category_id" id="sub_category"
+                        class="form-control @error('sous_category_id') is-invalid @enderror">
+                        <option value="">Choisir une famille</option>
+                        @foreach ($sous_categories as $cat)
+                            <option value="{{ $cat->id }}">{{ $cat->titre }}</option>
+                        @endforeach
+                    </select>
+                    @error('sous_category_id')
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>
@@ -64,7 +136,7 @@
                     @error('marque_id')
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
-                </div> 
+                </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="">Prix de vente</label>
@@ -124,7 +196,8 @@
 
             <div class="mb-3">
                 <label for="">Autres photos</label>
-                <input type="file" multiple name="photos" accept="image/*" class="form-control" wire:model="photos">
+                <input type="file" multiple name="photos" accept="image/*" class="form-control"
+                    wire:model="photos">
                 @error('photos')
                     <span class="text-danger small"> {{ $message }} </span>
                 @enderror

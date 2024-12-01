@@ -30,6 +30,20 @@ class produits extends Model
     'bonne_affaire',
     'bonne_affaires',
     'top',
+
+    'taille',
+    'valable',
+    'cmd',
+    'vo',
+    'livrable',
+    'bonne_affaires',
+
+    'tailles',
+    'cmd0',
+    'vble',
+
+
+
     ];
     protected $casts = [
         'photos' => 'json',

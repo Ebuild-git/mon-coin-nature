@@ -67,6 +67,8 @@ Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
 Route::get('ordres-croissant', [HomeController::class, 'croissant'])->name('ordres.croissant');
 Route::post('/shop', [HomeController::class, 'shop']);
 Route::get('/category/{id}', [HomeController::class, 'products'])->where('id', '[0-9]+');
+//Route::get('/sous_category/{id}', [HomeController::class, 'products'])->where('id', '[0-9]+');
+
 Route::get('/decroissant', [HomeController::class, 'decroissant'])
 ->name('decroissant');
 Route::get('/croissant', [HomeController::class, 'croissant'])
@@ -145,6 +147,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/category/{id}/update', [AdminController::class, 'categories_update'])
         ->name('categories.update')
         ->middleware('permission:category_edit');
+
+        
+        /////////sous_categories/////////////////////////
+        Route::get('/admin/sous_categories', [AdminController::class,'sous_categories'])
+        ->name('sous_categories');
+
+    Route::get('/admin/sous_category/{id}/update', [AdminController::class,'sous_categories_update'])->name('sous_categories.update');
+        
+    Route::get('/admin/sous_category_add', [AdminController::class,'sous_category_add']) ->name('sous_category.add');
+
 
         ///////////////////Transports/////////////////
         Route::get('/admin/transports', [AdminController::class, 'transports'])
