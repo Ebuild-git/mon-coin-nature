@@ -13,7 +13,8 @@
 		<div id="app">
 		<br> <br>
 			<!-- start hero -->
-			<div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 80%" style="background-image: url(img/intro_img/1.jpg);">
+		
+			<div  id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url('{{ $config->image_contact ? Storage::url($config->image_contact) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
 				<div class="container">
 					<div class="row">
 						<div class="col-12 col-lg-7">

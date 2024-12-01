@@ -2,6 +2,11 @@
 @section('titre', 'Mon panier')
 @section('body')
     <main>
+		@php
+$config = DB::table('configs')->first();
+$service = DB::table('services')->get();
+$produit = DB::table('produits')->get();
+@endphp
         {{-- <div class="breadcrumb-section">
             <div class="container">
                 <nav aria-label="breadcrumb">
@@ -15,8 +20,11 @@
         </div> --}}
 
         	<!-- start hero -->
-			<div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 80%" style="background-image: url(img/intro_img/12.jpg);color: #333;">
-				<div class="container">
+			
+			<div  id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url('{{ $config->image_about ? Storage::url($config->image_about) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
+    
+			{{-- <div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 80%" style="background-image: url(img/intro_img/12.jpg);color: #333;">
+			 --}}	<div class="container">
 					<div class="row">
 						<div class="col-12 col-md-7">
                             <br><br>

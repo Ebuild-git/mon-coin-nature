@@ -2,19 +2,25 @@
 @section('titre', 'Paiement')
 @section('body')
     <main>
+        @php
+$config = DB::table('configs')->first();
+$service = DB::table('services')->get();
+$produit = DB::table('produits')->get();
+@endphp
 
         <!-- start hero -->
-        <div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 80%"
-            style="background-image: url(img/intro_img/14.jpg);color: #333;">
+        
+			<div  id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url('{{ $config->image_register ? Storage::url($config->image_register) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
+    
+  
             <div class="container">
                 <div class="row">
+                    <br> <br>
                     <div class="col-12 col-md-7">
-                        <h1 class="__title"><span>Agro Shop</span> Checkout</h1>
+                        <br><br>
+                        <h1 class="__title"><span>Mon Coin Nature</span> {{ \App\Helpers\TranslationHelper::TranslateText('Confirmation commande') }}</h1>
 
-                        <p>
-                            The point of using is that it has a more-or-less normal distribution of letters, as opposed to
-                            using Content here content here making it look
-                        </p>
+                    
                     </div>
                 </div>
             </div>

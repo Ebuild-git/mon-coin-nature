@@ -44,7 +44,7 @@
 
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="">Image Page Connexion(689*1080) </label>
+                    <label for="">Image Page Connexion et inscription(1920*790) </label>
                     <input type="file" wire:model="image_login" accept="image/*" class="form-control">
                     @error('image_login')
                         <span class="text-danger small"> {{ $message }} </span>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="">Image Page Enregistrement (689*1000)</label>
+                    <label for="">Image Page parametres et Commandes (1600*770)</label>
                     <input type="file" wire:model="image_register" accept="image/*" class="form-control">
                     @error('image_register')
                         <span class="text-danger small"> {{ $message }} </span>
@@ -63,7 +63,7 @@
 
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="">Image entête A propos angle droit (126*120)</label>
+                    <label for="">Image entête panier et   (1600*770)</label>
                     <input type="file" wire:model="image_about" accept="image/*" class="form-control">
                     @error('image_about')
                         <span class="text-danger small"> {{ $message }} </span>
@@ -73,7 +73,7 @@
 
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="">Image entête Boutique angle droit (126*120)</label>
+                    <label for="">Image entête Boutique et Panier  (1920*730)</label>
                     <input type="file" wire:model="image_shop" accept="image/*" class="form-control">
                     @error('image_shop')
                         <span class="text-danger small"> {{ $message }} </span>
@@ -83,7 +83,7 @@
 
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="">Image entête Contact angle droit (126*120)</label>
+                    <label for="">Image entête Contact et A propos de nous (1600*770)</label>
                     <input type="file" wire:model="image_contact" accept="image/*" class="form-control">
                     @error('image_contact')
                         <span class="text-danger small"> {{ $message }} </span>

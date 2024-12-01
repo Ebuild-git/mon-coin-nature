@@ -226,7 +226,7 @@ Route::post('import', [CustomerController::class, 'importExcelData']);
         Route::get('/produits', [AdminController::class, 'produits'])
             ->name('produits')
             ->middleware('permission:product_view');
-
+            Route::post('customer/import', [App\Http\Controllers\AdminController::class, 'importExcelData']);
         Route::get('/corbeille', [AdminController::class, 'corbeille'])->name('corbeille');
         Route::get('/produit/{id}/update', [AdminController::class, 'produits_update'])
             ->name('produits.update')

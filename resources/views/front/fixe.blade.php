@@ -91,10 +91,20 @@ $produit = DB::table('produits')->get();
                             padding: 0px;
                         }
 
+
+                        .top-bar__logo {
+  position: relative;
+  margin-left: -15px;
+  z-index: 6
+}
+.top-bar__logo img {
+  height: 90px
+}
+
               
                         .site-logo img {
-                            height: 200px;
-                            width: 200px;
+                            height: 300px;
+                            width: 300px;
                             object-fit: contain;
                             transition: transform 0.3s ease;
                             margin-top: 31px;

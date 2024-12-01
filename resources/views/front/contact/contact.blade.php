@@ -10,8 +10,11 @@ $produit = DB::table('produits')->get();
 @endphp
 
 <br><br> <br>
-        <div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 55%" style="background-image: url(img/intro_img/7.jpg);">
-            <div class="container">
+
+<div  id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url('{{ $config->image_contact ? Storage::url($config->image_contact) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
+    
+      {{--   <div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 55%" style="background-image: url(img/intro_img/7.jpg);">
+       --}}      <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-7">
                         <h1 class="__title"><span>Mon Coin Vert</span> {!! \App\Helpers\TranslationHelper::TranslateText('Nous contactez') !!}</h1>

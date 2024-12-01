@@ -12,16 +12,17 @@
 	<body class="woocommerce-page auth-page">
 		<div id="app">
 		
-			<!-- start hero -->
+			<div  id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url('{{ $config->image_login ? Storage::url($config->image_login) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
+        <!-- start hero -->
+			
+{{-- 
 			<div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url(img/intro_img/15.jpg);color: #333;">
-				<div class="container">
+			 --}}	<div class="container">
 					<div class="row">
 						<div class="col-12 col-md-7">
-							<h1 class="__title"><span>Agro Shop</span> Sign in/up</h1>
+							<h1 class="__title"><span>Mon Coin Nature</span> {{ \App\Helpers\TranslationHelper::TranslateText('Connexion') }}</h1>
 
-							<p>
-								The point of using is that it has a more-or-less normal distribution of letters, as opposed to using Content here content here making it look
-							</p>
+						
 						</div>
 					</div>
 				</div>

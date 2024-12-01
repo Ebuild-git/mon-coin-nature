@@ -30,14 +30,30 @@
             <div class="card radius-15">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-6">
+                      
+                        <div class="col-sm-4">
                             <div class="card-title">
                                 <h5 class="mb-0 my-auto">
                                     Liste des produits
                                 </h5>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                    {{--     <div class="col-sm-4">
+                            <div class="card-title">
+                                <h5 class="mb-0 my-auto">
+                                    <form  action="{{ url('customer/import') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+            
+                                        <div class="input-group">
+                                            <input type="file" name="import_file" class="form-control" />
+                                            <button type="submit" class="btn btn-primary">Import</button>
+                                        </div>
+            
+                                    </form>
+                                </h5>
+                            </div>
+                        </div> --}}
+                        <div class="col-sm-4">
                             <div class="input-group mb-3">
                                 <button class="btn btn-warning btn-sm  px-5" onclick="url('{{ route('promotions') }}')">
                                     Promotions

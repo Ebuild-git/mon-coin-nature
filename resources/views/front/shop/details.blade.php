@@ -93,9 +93,8 @@
     <body class="woocommerce-page product-page">
         <div id="app"><br>
             <br>
-            <!-- start hero -->
-            <div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 100%"
-                style="background-image: url(/img/intro_img/13.jpg);color: #333;">
+            <div  id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url('{{ $config->image_shop ? Storage::url($config->image_shop) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
+    
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-7">

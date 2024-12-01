@@ -28,6 +28,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
+use App\Imports\ProductImport;
 
 class AdminController extends Controller
 {
@@ -525,6 +526,19 @@ public function testimonials()
     }
 
 
+    public function importExcelData(Request $request)
+    {
+        $request->validate([
+            'import_file' => [
+                'required',
+                'file'
+            ],
+        ]);
+
+        Excel::import(new ProductImport, $request->file('import_file'));
+
+        return redirect()->back()->with('status', 'Imported Successfully');
+    }
 
     public function commandes()
     {
