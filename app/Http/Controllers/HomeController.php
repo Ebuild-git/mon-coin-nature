@@ -211,7 +211,8 @@ class HomeController extends Controller
        // $produits = $produits()->paginate(16);
        $produits = $current_category->produits()->paginate(24);
         $users = User::all();  
-        return view('front.shop.index', compact('current_category', 'users', 'categories', 'produits'));
+        $souscategories = Sous_category::with('produits')->get();
+        return view('front.shop.index', compact('current_category', 'users', 'categories', 'produits','souscategories'));
     }
 
 
