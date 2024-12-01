@@ -28,33 +28,35 @@
     @endsection
 
 
-	<style>
-		.custom-btn.custom-btn--style-1 {
-	background-color: transparent
-	}
-	.custom-btn.custom-btn--style-1:focus,
-	.custom-btn.custom-btn--style-1:hover,
-	.custom-btn.custom-btn--style-2 {
-	background-color: #009640
-	}
+    <style>
+        .custom-btn.custom-btn--style-1 {
+            background-color: transparent
+        }
 
-	.custom-btn {
-    border: 2px solid #009640;
-   
-    background-color: transparent;
-  
-   
-  
-}
+        .custom-btn.custom-btn--style-1:focus,
+        .custom-btn.custom-btn--style-1:hover,
+        .custom-btn.custom-btn--style-2 {
+            background-color: #009640
+        }
 
-.custom-btn:hover {
-    background-color: #009640; /* Couleur de fond */
-    border-color: #009640;    /* Couleur de la bordure */
-        /* Couleur du texte */
-     /* Agrandissement léger */
-}
-	
-	</style>
+        .custom-btn {
+            border: 2px solid #009640;
+
+            background-color: transparent;
+
+
+
+        }
+
+        .custom-btn:hover {
+            background-color: #009640;
+            /* Couleur de fond */
+            border-color: #009640;
+            /* Couleur de la bordure */
+            /* Couleur du texte */
+            /* Agrandissement léger */
+        }
+    </style>
 
 
     <!-- Load google font
@@ -93,8 +95,9 @@
     <body class="woocommerce-page product-page">
         <div id="app"><br>
             <br>
-            <div  id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url('{{ $config->image_shop ? Storage::url($config->image_shop) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
-    
+            <div id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%"
+                style="background-image: url('{{ $config->image_shop ? Storage::url($config->image_shop) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
+
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-7">
@@ -148,7 +151,7 @@
                             };
                         s.type = 'text/javascript';
                         s.async =
-                        true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
+                            true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
                         s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";
                         m.appendChild(s);
                         // m.insertBefore(s, m.firstChild);
@@ -214,7 +217,7 @@
                                                         {{ \App\Helpers\TranslationHelper::TranslateText(Str::limit($produit->categories->nom, 30)) }}
                                                     </span>
                                                 </div>
-
+                                                <br><br>
                                                 <div class="product-price">
                                                     @if ($produit->inPromotion())
                                                         <span class="product-price__item product-price__item--new">
@@ -228,6 +231,10 @@
                                                         <span class="product-price__item product-price__item--old">
                                                             {{ $produit->prix }} DT
                                                         </span>
+                                                    @else
+                                                        <span class="product-price__item product-price__item--new">
+                                                            {{ $produit->getPrice() }} <x-devise></x-devise>
+                                                            </b></span>
                                                     @endif
                                                     {{-- <span class="product-price__item product-price__item--new">3,35 $</span> --}}
                                                 </div>
@@ -239,7 +246,7 @@
                                                     {!! \App\Helpers\TranslationHelper::TranslateText(Str::limit($produit->description, 100)) !!}
 
                                                 </p>
-
+                                                <br><br>
                                                 <form class="__add-to-cart" action="#">
                                                     <div class="quantity-counter js-quantity-counter">
                                                         <span class="__btn __btn--minus"></span>
@@ -248,7 +255,7 @@
                                                             id="qte-{{ $produit->id }}" />
                                                         <span class="__btn __btn--plus"></span>
                                                     </div>
-
+                                                    <br><br>
                                                     <a class="custom-btn custom-btn--medium custom-btn--style-1"
                                                         onclick="AddToCart( {{ $produit->id }} )"><i
                                                             class="fontello-shopping-bag"></i>
@@ -288,7 +295,7 @@
                                 </div>
                                 <!-- start product single -->
 
-                                <h2> {{ \App\Helpers\TranslationHelper::TranslateText('Les produits de la même categorie') }}
+                                <h2> {{ \App\Helpers\TranslationHelper::TranslateText('Les produits de la même famille') }}
                                 </h2>
                                 <div class="spacer py-2"></div>
                                 @php

@@ -195,7 +195,7 @@
                     </li>
                 @endcan
 
-                <li>
+              {{--   <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon icon-color-3"> <i class="ri-list-ordered"></i>
                         </div>
@@ -209,7 +209,7 @@
                                 <i class="bx bx-right-arrow-alt"></i>
                                 Liste des marques
                             </a>
-                        </li>
+                        </li> --}}
                        {{--  <li>
                             <a href="{{ route('category.add') }}">
                                 <i class="bx bx-right-arrow-alt"></i>
