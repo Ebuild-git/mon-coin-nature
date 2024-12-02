@@ -107,7 +107,7 @@ $produit = DB::table('produits')->get();
                             width: 300px;
                             object-fit: contain;
                             transition: transform 0.3s ease;
-                            margin-top: 31px;
+                            margin-top: -31px;
                         }
 
                         @media (max-width: 768px) {
@@ -334,7 +334,7 @@ $produit = DB::table('produits')->get();
                                         </li>
                                     </ul>
                                 </nav>
-
+{{-- 
                                 <div class="top-bar__contacts">
                                     <span>{{ $config->addresse ?? ' ' }}</span>
                                     <span><a href="#">{{ $config->telephone  ??  ' ' }}</a></span>
@@ -347,7 +347,7 @@ $produit = DB::table('produits')->get();
                                         <a class="fontello-linkedin-squared" href="{{ $config->linkedin }}"></a>
                                         <a class="fontello-instagram" href="{{ $config->instagram  ?? ' ' }}"></a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
