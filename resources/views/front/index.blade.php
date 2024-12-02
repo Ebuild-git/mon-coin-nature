@@ -519,7 +519,7 @@ border-color: #009640;
 									<!-- start item -->
 									@if ($produits)
 									@foreach ($produits as $key => $produit)
-									@if ($produit->inPromotion())
+									@if ($produit->inPromotion() && $produit->valable ==true)
 									<div class="col-12 col-sm-6 col-lg-3">
 										<div class="__item">
 											<figure class="__image">
@@ -593,7 +593,7 @@ border-color: #009640;
 										<!-- start item -->
 										@if ($produits)
 										@foreach ($produits as $key => $produit)
-										@if ($produit->free_shipping   == true)
+										@if ($produit->free_shipping   == true && $produit->valable ==true)
 										<div class="col-12 col-sm-6 col-lg-3">
 											<div class="__item">
 												<figure class="__image">
