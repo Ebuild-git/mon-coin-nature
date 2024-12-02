@@ -11,7 +11,7 @@
         <div class="mb-3">
             <label for="">Image de couverture</label>
             <label for="" class="small text-warning">
-                ( 1920px x 990px )
+                ( 1920px x 930px )
             </label>
             <input type="file" wire:model="photo" class="form-control @error('photo') is-invalid @enderror" name="photo">
             @error('photo')

@@ -48,6 +48,7 @@ background-color: #009640
 			<!-- end header -->
 
 			<!-- start start screen -->
+	
 			<div
 				id="start-screen"
 				class="start-screen start-screen--style-4 js-slick"

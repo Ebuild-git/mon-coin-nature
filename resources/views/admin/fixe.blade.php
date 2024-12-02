@@ -353,7 +353,7 @@
                         </div>
                     </a>
 
-                    <a href="{{ route('testimonials') }}">
+                    {{-- <a href="{{ route('testimonials') }}">
                         <div class="parent-icon " style="color: #027461">
                             <i class='bx bxs-contact'></i>
                         </div>
@@ -361,7 +361,7 @@
                             Témoignages
                         </div>
                     </a>
-                      
+                       --}}
                 
                 </li>
                 @can('setting_view')

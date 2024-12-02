@@ -18,8 +18,8 @@
 
                     <div class="form-check form-switch">
 
-                        <input name="sur_devis" class="form-check-input" class="switch" type="checkbox" id="sur_devis"
-                            wire:model.lazy="free_shipping" wire:click="free_shipping">
+                        <input name="free_shipping" class="form-check-input" class="switch"  type="checkbox" id="sur_devis"
+                            wire:model.lazy="free_shipping"  wire:click="free_shipping">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Bonne affaire</label>
                         @error('free_shipping')
                             <span class="text-danger small"> {{ $message }} </span>
@@ -30,7 +30,7 @@
 
                     <div class="form-check form-switch">
 
-                        <input name="sur_devis" class="form-check-input" class="switch" type="checkbox" id="valable"
+                        <input name="valable" class="form-check-input" class="switch" type="checkbox" id="valable"
                             wire:model.lazy="valable" wire:click="valable">
                         <label class="form-check-label" for="flexSwitchCheckDefault"> Afficher l'aticle</label>
                         @error('valable')
@@ -129,18 +129,7 @@
                         <span class="text-danger small"> {{ $message }} </span>
                     @enderror
                 </div>
-               {{--  <div class="col-sm-6 mb-3">
-                    <label for="">Marque </label>
-                    <select wire:model='marque_id' class="form-control @error('marque_id') is-invalid @enderror">
-                        <option value=""></option>
-                        @foreach ($marques as $cat)
-                            <option value="{{ $cat->id }}">{{ $cat->nom }}</option>
-                        @endforeach
-                    </select>
-                    @error('marque_id')
-                        <span class="text-danger small"> {{ $message }} </span>
-                    @enderror
-                </div> --}}
+          
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="">Prix de vente</label>

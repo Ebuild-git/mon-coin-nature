@@ -13,10 +13,24 @@ class AddProduit extends Component
     use WithFileUploads;
 
     public $nom,$tags, $prix, $category_id,$sous_category_id,$photo, $photos, $prix_achat, $photo2, $photos2, $produit, $reference, $description,$marque_id ,
-    $taille,$valable,  $cmd,  $vo,  $livrable, $bonne_affaire, $tailles, $cmd0, $vble; 
+    $taille,$valable1,  $cmd,  $vo1,  $livrable1, $bonne_affaire, $tailles, $cmd01, $vble; 
 
-public $free_shipping;
+//public $free_shipping;
 public $bonne_affaires; 
+
+
+public $free_shipping = false;
+public $valable = false;
+public $livrable = false;
+public $cmd0 = false;
+public $vo = false;
+
+
+
+public $type_taille;
+public $type_poids;
+public $type_piece;
+
 
 public $sous_categories = array();
     public function mount($produit)
@@ -36,6 +50,9 @@ public $sous_categories = array();
             $this->description = $produit->description;
             $this->free_shipping = $produit->free_shipping;
             $this->bonne_affaires = $produit->bonne_affaires ?? 0;
+            $this->type_taille = $produit->type_taille ?? 0;
+            $this->type_poids = $produit->type_poids ?? 0;
+            $this->type_piece = $produit->type_piece?? 0;
 
             $this->taille = $produit->taille;
             $this->valable = $produit->valable;

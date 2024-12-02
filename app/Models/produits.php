@@ -42,6 +42,10 @@ class produits extends Model
     'cmd0',
     'vble',
 
+    'type_taille',
+    'type_poids',
+    'type_piece',
+
 
 
     ];

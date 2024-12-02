@@ -41,6 +41,11 @@ return new class extends Migration
             $table->string("tailles")->nullable();
             $table->boolean('cmd0')->default(false);
             $table->boolean('vble')->default(false);
+
+            $table->boolean('type_taille')->default(false);
+            $table->boolean('type_poids')->default(false);
+            $table->boolean('type_piece')->default(false);
+            
             $table->softDeletes();
             $table->timestamps();
 
