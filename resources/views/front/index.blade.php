@@ -48,7 +48,33 @@ background-color: #009640
 			<!-- end header -->
 
 			<!-- start start screen -->
-	
+	<style>
+		.start-screen__bg {
+    width: 100%; 
+    max-width: 1920px; 
+    height: 930px; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    margin: 0 auto; 
+
+	@media (max-width: 1920px) {
+    .start-screen__bg {
+        width: 100%;
+        height: auto; /
+    }
+    .start-screen__content__item {
+        height: auto;
+        padding: 20px; 
+    }
+}
+
+}
+
+
+
+
+	</style>
 			<div
 				id="start-screen"
 				class="start-screen start-screen--style-4 js-slick"
