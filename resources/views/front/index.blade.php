@@ -406,9 +406,9 @@ border-color: #009640;
 									}]
 								}'>
 							
-								
+								@if ($produits)
                                 @foreach ($produits as $produit)
-                                @if ($produit)
+                                @if ($produit->valable ==true)
 								<div class="__item bordures">
                                     <a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
 									<figure class="__image">
@@ -479,6 +479,7 @@ border-color: #009640;
 								</div>
                                 @endif
                                 @endforeach
+								@endif
                            
 							</div>
 						</div>

@@ -266,6 +266,7 @@ border-color: #009640; /* Changer la couleur de la bordure au survol */
 											@endphp
 												<ul>
 													@foreach ($lastproduits as $produit) 
+													@if ($produit->valable ==true)
 													<li>
 														<div class="row no-gutters">
 															<div class="col-auto __image-wrap">
@@ -288,6 +289,7 @@ border-color: #009640; /* Changer la couleur de la bordure au survol */
 															</div>
 														</div>
 													</li>
+													@endif
 													@endforeach
 
 												
@@ -297,14 +299,7 @@ border-color: #009640; /* Changer la couleur de la bordure au survol */
 
 											<!-- start widget -->
 
-											@php
-												$lastproduit= DB::table('produits')->latest()->take(1)->get();
-											@endphp
-											<div class="widget widget--banner">
-												@foreach ($lastproduit as $produit) 
-												<a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}"><img class="img-fluid  lazy" src="{{ Storage::url($produit->photo) }}" data-src="{{ Storage::url($produit->photo) }}" alt="demo" /></a>
-											@endforeach
-											</div>
+										
 											<!-- end widget -->
 										</div>
 									</aside>
