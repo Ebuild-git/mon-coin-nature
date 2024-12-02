@@ -52,7 +52,7 @@ background-color: #009640
 		.start-screen__bg {
     width: 100%; 
     max-width: 1920px; 
-    height: 930px; 
+    height: 930px !important; 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -71,9 +71,7 @@ background-color: #009640
 
 }
 
-.slick-slide {
-    height: 930px !important;
-}
+
 
 
 	</style>
