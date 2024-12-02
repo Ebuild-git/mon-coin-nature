@@ -71,7 +71,9 @@ background-color: #009640
 
 }
 
-
+.slick-slide {
+    height: 930px !important;
+}
 
 
 	</style>
