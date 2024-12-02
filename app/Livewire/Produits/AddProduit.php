@@ -20,7 +20,7 @@ public $bonne_affaires;
 
 
 public $free_shipping ;
-public $valable ;
+public $valable = true ;
 public $livrable;
 public $cmd0 ;
 public $vo;
