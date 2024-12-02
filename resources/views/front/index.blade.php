@@ -49,30 +49,24 @@ background-color: #009640
 
 			<!-- start start screen -->
 	<style>
-		.start-screen__bg {
-    width: 100%; 
-    max-width: 1920px; 
-    height: 930px !important; 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    margin: 0 auto; 
-
-	@media (max-width: 1920px) {
+@media (max-width: 768px) {
     .start-screen__bg {
-        width: 100%;
-        height: auto; /
-    }
-    .start-screen__content__item {
-        height: auto;
-        padding: 20px; 
+        aspect-ratio: 16 / 9; /* Ajuste le ratio pour mobile */
+        background-position: top; /* Focalise sur le haut de l'image */
     }
 }
 
+.start-screen__content__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center; /* Centrage vertical */
+    justify-content: center; /* Centrage horizontal */
+    padding: 20px;
 }
-
-
-
 
 	</style>
 			<div
@@ -88,11 +82,22 @@ background-color: #009640
 				
                 @foreach ($banners as $key => $banner)
                 <div class="start-screen__slide">
-                    <div class="start-screen__bg" style="background-image: url('{{ $banner->image ? Storage::url($banner->image) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;"></div>
-        
-                    <div class="start-screen__content__item align-items-center">
+                 {{--    <div class="start-screen__bg" style="background-image: url('{{ $banner->image ? Storage::url($banner->image) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;"></div>
+         --}}
+		 <div class="start-screen__bg" 
+         style="width: 1920px; height: 930px; 
+                background-image: url('{{ $banner->image ? Storage::url($banner->image) : asset('img/home_img/default.jpg') }}'); 
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat; 
+                margin: 0 auto;
+				  aspect-ratio: 16 / 9;">
+    </div>
+                   {{--  <div class="start-screen__content__item align-items-center"> --}}
+					<div class="start-screen__content__item align-items-center" 
+					style="width: 1920px; height: 930px;">
                         <div class="container">
-                            <div class="row justify-content-end">
+                            <div class="row justify-content-center">
                                 <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7">
 								<br>
 								<br>
