@@ -123,7 +123,7 @@
                         </td>
                         <td>{{ $commande->phone }}</td>
                         <td>
-                            {{ $commande->gouvernorat ?? 'N/A' }}
+                            {{ $commande->transport->ville ?? 'N/A' }}
                         </td>
                         <td>{{ $commande->montant() }} <x-devise></x-devise> </td>
                         <td>
