@@ -179,13 +179,13 @@ $produit = DB::table('produits')->get();
                                             <div class="col-12">
                                                 <div class="input-wrp">
                                                     <select class="textfield" type="text" name="gouvernorat"
-                                                        id="Region">
+                                                        id="transport_id">
                                                         <option value="">
                                                             {{ \App\Helpers\TranslationHelper::TranslateText('Gouvernorat') }}
                                                         </option>
                                                         @foreach ($transports as $gouvernorat)
-                                                            <option value="{{ $gouvernorat }}">
-                                                                {{ $gouvernorat->ville }}
+                                                            <option value="{{ $gouvernorat }}" data-frais="{{ $gouvernorat->frais }}">
+                                                                {{ $gouvernorat->ville }}     <br> -Frais Transport:  {{ $gouvernorat->frais }} DT
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -276,10 +276,10 @@ $produit = DB::table('produits')->get();
                                                                         <input name="mode" type="radio"
                                                                             value="livraison"> <label>Payement à la
                                                                             livraison</label><br><br>
-
+{{-- 
                                                                         <input name="mode" type="radio"
                                                                             value="solde"> <label> Payement avec le solde
-                                                                        </label>
+                                                                        </label> --}}
                                                                     </form-group>
 
                                                                 </div>
@@ -301,7 +301,7 @@ $produit = DB::table('produits')->get();
 
                                                 <tbody>
                                                     <tr>
-                                                        <td>Total:</td>
+                                                        <td>SubTotal:</td>
                                                         <td>{{ $total }} DT</td>
                                                     </tr>
 
@@ -316,18 +316,21 @@ $produit = DB::table('produits')->get();
 
                                                         <td>
 
-                                                            <div class="form-group">
+                                                            {{-- <div class="form-group">
                                                                 <label for="transport">Sélectionnez:</label>
-                                                                <select name="transport" id="transport"
+                                                                <select name="transport" id="transport_id"
                                                                     class="form-control">
                                                                     @foreach ($transports as $transport)
-                                                                        <option value="{{ $transport->id }}">
-                                                                            {{ $transport->ville }} -
-                                                                            {{ $transport->frais }} DT
+                                                                        <option value="{{ $transport->id }}"data-frais="{{ $transport->frais }}">
+                                                                            {{ $transport->ville }} -  {{ $transport->frais }} DT
+                                                                          
                                                                         </option>
                                                                     @endforeach
                                                                 </select>
-                                                            </div>
+                                                            </div> --}}
+
+                                                            <input type="text" name="transport" id="frais"  readonly>
+ 
                                                         </td>
 
 
@@ -344,10 +347,14 @@ $produit = DB::table('produits')->get();
                                                                     DT</td>
                                                             </tr>
  --}}
-                                                    {{-- <tr>
+                                                     <tr>
 																<td>Total</td>
-																<td>{{ $total  }} DT</td>
-															</tr> --}}
+																<td>{{ $total  }} DT
+
+                                                                    <input type="text" name="total" id="total" class="form-control" readonly>
+
+                                                                </td>
+															</tr> 
                                                 </tbody>
                                             </table>
                                         </div>
@@ -362,6 +369,30 @@ $produit = DB::table('produits')->get();
             </div>
         </section>
         <!-- end section -->
+
+      
+<script>
+    // Script pour calculer le total avec les frais de transport
+    document.getElementById('transport_id').addEventListener('change', function() {
+        var fraisTransport = parseFloat(this.options[this.selectedIndex].getAttribute('data-frais')) || 0;
+        var quantite = parseInt(document.getElementById('quantite').value) || 0;
+
+        // Mettre à jour les frais et le total
+        document.getElementById('frais').value = fraisTransport + ' €';
+        var total = fraisTransport + quantite * 50;  // Par exemple, 50 € par produit
+        document.getElementById('total').value = total.toFixed(2) + ' €';
+    });
+
+    // Script pour recalculer le total lorsque la quantité change
+    document.getElementById('quantite').addEventListener('input', function() {
+        var fraisTransport = parseFloat(document.getElementById('transport_id').selectedOptions[0].getAttribute('data-frais')) || 0;
+        var quantite = parseInt(this.value) || 0;
+        
+        // Calculer le total
+        var total = fraisTransport + quantite * 50;  // Par exemple, 50 € par produit
+        document.getElementById('total').value = total.toFixed(2) + ' €';
+    });
+</script>
     </main>
 
 @endsection

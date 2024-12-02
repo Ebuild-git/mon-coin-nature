@@ -19,11 +19,11 @@ class AddProduit extends Component
 public $bonne_affaires; 
 
 
-public $free_shipping = false;
-public $valable = false;
-public $livrable = false;
-public $cmd0 = false;
-public $vo = false;
+public $free_shipping ;
+public $valable ;
+public $livrable;
+public $cmd0 ;
+public $vo;
 
 
 
@@ -33,9 +33,10 @@ public $type_piece;
 
 
 public $sous_categories = array();
-    public function mount($produit)
+    public function mount($produit = null)
     {
         if ($produit) {
+          $this->produit = produits::find($produit);
             $this->produit = $produit;
             $this->nom = $produit->nom;
             $this->tags = $produit->tags;
@@ -49,10 +50,15 @@ public $sous_categories = array();
             $this->photos2 = $produit->photos;
             $this->description = $produit->description;
             $this->free_shipping = $produit->free_shipping;
-            $this->bonne_affaires = $produit->bonne_affaires ?? 0;
-            $this->type_taille = $produit->type_taille ?? 0;
-            $this->type_poids = $produit->type_poids ?? 0;
-            $this->type_piece = $produit->type_piece?? 0;
+          //  $this->bonne_affaires = $produit->bonne_affaires ?? 0;
+         //   $this->type_taille = $produit->type_taille ?? 0;
+         ////   $this->type_poids = $produit->type_poids ?? 0;
+         //   $this->type_piece = $produit->type_piece?? 0;
+         $this->free_shipping = $this->produit->free_shipping;
+         $this->valable = $this->produit->valable;
+         $this->livrable = $this->produit->livrable;
+         $this->cmd0 = $this->produit->cmd0;
+         $this->vo = $this->produit->vo;
 
             $this->taille = $produit->taille;
             $this->valable = $produit->valable;

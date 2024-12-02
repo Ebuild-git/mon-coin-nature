@@ -19,7 +19,7 @@
                     <div class="form-check form-switch">
 
                         <input name="free_shipping" class="form-check-input" class="switch"  type="checkbox" id="sur_devis"
-                            wire:model.lazy="free_shipping"  wire:click="free_shipping">
+                            wire:model.lazy="free_shipping"  wire:click="free_shipping" {{ $free_shipping ? 'checked' : '' }}>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Bonne affaire</label>
                         @error('free_shipping')
                             <span class="text-danger small"> {{ $message }} </span>
@@ -31,7 +31,7 @@
                     <div class="form-check form-switch">
 
                         <input name="valable" class="form-check-input" class="switch" type="checkbox" id="valable"
-                            wire:model.lazy="valable" wire:click="valable">
+                            wire:model.lazy="valable" wire:click="valable" {{ $valable ? 'checked' : '' }}>
                         <label class="form-check-label" for="flexSwitchCheckDefault"> Afficher l'aticle</label>
                         @error('valable')
                             <span class="text-danger small"> {{ $message }} </span>
@@ -45,7 +45,7 @@
                     <div class="form-check form-switch">
 
                         <input name="livrable" class="form-check-input" class="switch" type="checkbox" id="valable"
-                            wire:model.lazy="livrable" wire:click="livrable">
+                            wire:model.lazy="livrable"  wire:click="livrable" {{ $livrable ? 'checked' : '' }}>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Livrable</label>
                         @error('livrable')
                             <span class="text-danger small"> {{ $message }} </span>
@@ -61,7 +61,7 @@
                     <div class="form-check form-switch">
 
                         <input name="cmd0" class="form-check-input" class="switch" type="checkbox" id="cmd0"
-                            wire:model.lazy="cmd0" wire:click="cmd0">
+                            wire:model.lazy="cmd0"  wire:click="cmd0" {{ $cmd0 ? 'checked' : '' }}>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Commande autorisée si le stock est nul</label>
                         @error('cmd0')
                             <span class="text-danger small"> {{ $message }} </span>
@@ -74,7 +74,7 @@
                     <div class="form-check form-switch">
 
                         <input name="vo" class="form-check-input" class="switch" type="checkbox" id="cmd0"
-                            wire:model.lazy="vo" wire:click="vo">
+                            wire:model.lazy="vo"  wire:click="vo" {{ $vo ? 'checked' : '' }} >
                         <label class="form-check-label" for="flexSwitchCheckDefault">Afficher l'article même si le stock est nul</label>
                         @error('vo')
                             <span class="text-danger small"> {{ $message }} </span>
