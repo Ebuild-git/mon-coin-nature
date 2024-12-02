@@ -183,9 +183,9 @@ $produit = DB::table('produits')->get();
                                                         <option value="">
                                                             {{ \App\Helpers\TranslationHelper::TranslateText('Gouvernorat') }}
                                                         </option>
-                                                        @foreach ($gouvernorats as $gouvernorat)
+                                                        @foreach ($transports as $gouvernorat)
                                                             <option value="{{ $gouvernorat }}">
-                                                                {{ $gouvernorat }}
+                                                                {{ $gouvernorat->ville }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -238,7 +238,7 @@ $produit = DB::table('produits')->get();
                                                             </td>
 
                                                             <td width="1%">
-                                                                <span class="__total">{{ $total }}</span>
+                                                                <span class="__total">{{ $details['quantite']*$details['prix'] }}</span>
                                                             </td>
                                                         </tr>
                                                     @endforeach

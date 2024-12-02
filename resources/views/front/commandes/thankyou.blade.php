@@ -1,6 +1,12 @@
 @extends('front.fixe')
 @section('titre', "Félicitation pour votre commande")
 @section('body')
+@php
+$config = DB::table('configs')->first();
+$service = DB::table('services')->get();
+$produit = DB::table('produits')->get();
+@endphp
+
 
 <main> 
     <div  id="hero" class="jarallax" data-speed="0.7" data-img-position="50% 40%" style="background-image: url('{{ $config->image_register ? Storage::url($config->image_register) : asset('img/home_img/default.jpg') }}');background-position: top 30% left 70%;">
