@@ -45,6 +45,11 @@ class produits extends Model
     'type_taille',
     'type_poids',
     'type_piece',
+    'poids',
+    'piece',
+  
+    
+
 
 
 

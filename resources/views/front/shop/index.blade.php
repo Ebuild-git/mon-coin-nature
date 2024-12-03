@@ -266,7 +266,7 @@ border-color: #009640; /* Changer la couleur de la bordure au survol */
 											@endphp
 												<ul>
 													@foreach ($lastproduits as $produit) 
-													@if ($produit->valable ==true)
+													@if ($produit->valable ==true  )
 													<li>
 														<div class="row no-gutters">
 															<div class="col-auto __image-wrap">
@@ -341,7 +341,7 @@ border-color: #009640; /* Changer la couleur de la bordure au survol */
 												@if ($produits)
 
 												@foreach ($produits as $key => $produit)
-												@if($produit->valable == true)
+												@if($produit->valable == true  )
 												<div class="col-12 col-sm-6 col-lg-4">
 													<div class="__item">
 														<figure class="__image">

@@ -98,6 +98,60 @@
                 @enderror
             </div>
 
+            <div class="row">
+                
+                <div class="col-sm-6">
+
+                    <div class="form-check form-switch">
+
+                        <input name="type_taille" class="form-check-input" class="switch" type="checkbox" id="type_taille"
+                            wire:model.lazy="type_taille"  wire:click="type_taille" {{ $type_taille ? 'checked' : '' }}>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Enregistrer par taille</label>
+                        @error('type_taille')
+                            <span class="text-danger small"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class="form-check form-switch">
+
+                        <input name="type_piece" class="form-check-input" class="switch" type="checkbox" id="type_piece"
+                            wire:model.lazy="type_piece"  wire:click="type_piece" {{ $type_piece ? 'checked' : '' }}>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Enregistrer par pièce</label>
+                        @error('type_piece')
+                            <span class="text-danger small"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+
+              
+
+            </div>
+            @if ($type_taille)
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="">Taille</label>
+                    <input type="text" step="0.1" name="taille" class="form-control"  wire:model.lazy="taille" wire:model="taille">
+                    @error('prix')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+            </div>
+            @endif
+            @if ($type_piece)
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="">Pièce</label>
+                    <input type="text" step="0.1" name="piece" class="form-control"  wire:model.lazy="piece" wire:model="piece">
+                    @error('prix')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+            </div>
+            @endif
+
 
             <div class="row">
 

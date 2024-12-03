@@ -31,7 +31,8 @@ return new class extends Migration
             $table->unsignedBigInteger("sous_categorie_id")->nullable();
             $table->unsignedBigInteger("marque_id")->nullable();
 
-            $table->integer("taille")->nullable();
+        
+
             $table->boolean('valable')->default(false);
             $table->boolean('cmd')->default(false);
             $table->boolean('vo')->default(false);
@@ -45,6 +46,10 @@ return new class extends Migration
             $table->boolean('type_taille')->default(false);
             $table->boolean('type_poids')->default(false);
             $table->boolean('type_piece')->default(false);
+
+            $table->integer("taille")->nullable();
+            $table->string('poids')->nullable();
+            $table->string('piece')->nullable();
             
             $table->softDeletes();
             $table->timestamps();

@@ -40,7 +40,7 @@ class commandes extends Model
     }
 
     public function montant(){
-        $total = $this->transport->frais;
+        $total = $this->transport->frais ??  null;
         foreach ($this->contenus as $contenu){
             $total += $contenu->prix_unitaire * $contenu->quantite;
         }

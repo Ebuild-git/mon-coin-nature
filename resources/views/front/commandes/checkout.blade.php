@@ -110,8 +110,8 @@ $produit = DB::table('produits')->get();
                             <h2>BILLING <span>DETAILS</span></h2>
 
                             <div class="spacer py-3"></div>
-
-
+@livewire('Commandes.Checkout')
+{{-- 
                             <form class="checkout__form" action="{{ route('order.confirm') }}" method="post">
                                 @if ($errors->any())
                                     {!! implode('', $errors->all('<div>:message</div>')) !!}
@@ -271,15 +271,12 @@ $produit = DB::table('produits')->get();
 
                                                             <div class="content">
                                                                 <div class="checkbox">
-                                                                    {{-- <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label> --}}
-                                                                    <form-group>
+                                                             <form-group>
                                                                         <input name="mode" type="radio"
                                                                             value="livraison"> <label>Payement à la
                                                                             livraison</label><br><br>
-{{-- 
-                                                                        <input name="mode" type="radio"
-                                                                            value="solde"> <label> Payement avec le solde
-                                                                        </label> --}}
+
+                                                                       
                                                                     </form-group>
 
                                                                 </div>
@@ -289,8 +286,6 @@ $produit = DB::table('produits')->get();
 
                                                     <tr>
                                                         <td colspan="2">
-                                                            {{-- <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
- --}}
                                                             <button
                                                                 class="custom-btn custom-btn--medium custom-btn--style-1"
                                                                 type="submit"
@@ -316,18 +311,6 @@ $produit = DB::table('produits')->get();
 
                                                         <td>
 
-                                                            {{-- <div class="form-group">
-                                                                <label for="transport">Sélectionnez:</label>
-                                                                <select name="transport" id="transport_id"
-                                                                    class="form-control">
-                                                                    @foreach ($transports as $transport)
-                                                                        <option value="{{ $transport->id }}"data-frais="{{ $transport->frais }}">
-                                                                            {{ $transport->ville }} -  {{ $transport->frais }} DT
-                                                                          
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div> --}}
 
                                                             <input type="text" name="transport" id="frais"  readonly>
  
@@ -341,12 +324,8 @@ $produit = DB::table('produits')->get();
 
 
                                                     </tr>
-                                                    {{-- <tr>
-                                                                <td>{{ \App\Helpers\TranslationHelper::TranslateText('Coupon de réduction') }}</td>
-                                                                <td>-{{ session('coupon')['value'] ?? 0 }}
-                                                                    DT</td>
-                                                            </tr>
- --}}
+                                                  
+
                                                      <tr>
 																<td>Total</td>
 																<td>{{ $total  }} DT
@@ -360,9 +339,9 @@ $produit = DB::table('produits')->get();
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </form> --}}
                         </div>
-                        <!-- end checkout -->
+                    
 
                     </div>
                 </div>
@@ -370,29 +349,7 @@ $produit = DB::table('produits')->get();
         </section>
         <!-- end section -->
 
-      
-<script>
-    // Script pour calculer le total avec les frais de transport
-    document.getElementById('transport_id').addEventListener('change', function() {
-        var fraisTransport = parseFloat(this.options[this.selectedIndex].getAttribute('data-frais')) || 0;
-        var quantite = parseInt(document.getElementById('quantite').value) || 0;
-
-        // Mettre à jour les frais et le total
-        document.getElementById('frais').value = fraisTransport + ' €';
-        var total = fraisTransport + quantite * 50;  // Par exemple, 50 € par produit
-        document.getElementById('total').value = total.toFixed(2) + ' €';
-    });
-
-    // Script pour recalculer le total lorsque la quantité change
-    document.getElementById('quantite').addEventListener('input', function() {
-        var fraisTransport = parseFloat(document.getElementById('transport_id').selectedOptions[0].getAttribute('data-frais')) || 0;
-        var quantite = parseInt(this.value) || 0;
-        
-        // Calculer le total
-        var total = fraisTransport + quantite * 50;  // Par exemple, 50 € par produit
-        document.getElementById('total').value = total.toFixed(2) + ' €';
-    });
-</script>
+ 
     </main>
 
 @endsection

@@ -32,6 +32,11 @@ public $type_poids;
 public $type_piece;
 
 
+public $poids;
+public $piece;
+
+
+
 public $sous_categories = array();
     public function mount($produit = null)
     {
@@ -62,6 +67,8 @@ public $sous_categories = array();
 
             $this->taille = $produit->taille;
             $this->valable = $produit->valable;
+            $this->piece = $produit->piece;
+            $this->poids = $produit->poids;
            // $this->cmd = $produit->cmd;
 //$this->vble = $produit->vble;
            $this->vo = $produit->vo ?? false;
@@ -153,6 +160,10 @@ public $sous_categories = array();
         $produit->bonne_affaires = $this->bonne_affaires ?? false;
         $produit->taille = $this->taille;
         $produit->valable = $this->valable ?? false;
+
+        $produit->piece = $this->piece;
+        $produit->poids = $this->poids;
+
         //$produit->cmd = $this->cmd;
         //$produit->vble = $this->vble;
         $produit->vo = $this->vo ?? false;
@@ -229,6 +240,8 @@ public $sous_categories = array();
             $this->produit->bonne_affaires = $this->bonne_affaires ?? false;
             $this->produit->taille = $this->taille;
             $this->produit->valable = $this->valable ?? false;
+            $this->produit->piece = $this->piece;
+            $this->produit->poids = $this->poids;
           //  $this->produit->cmd = $this->cmd;
          //   $this->produit->vble = $this->vble;
             $this->produit->vo = $this->vo ?? false;
@@ -270,5 +283,7 @@ public $sous_categories = array();
         $this->prix = '';
         $this->photo = '';
         $this->photos = '';
+        $this->description = '';
+        
     }
 }
