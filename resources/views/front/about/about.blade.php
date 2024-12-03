@@ -133,7 +133,7 @@
 												</div>
 
 												<div class="d-table-cell align-middle">
-													<p class="__count js-count" data-from="0" data-to="19500">19 500</p>
+													<p class="__count js-count" data-from="0" data-to="{{ $products }}"></p>
 
 													<p class="__title">Produits</p>
 												</div>
@@ -153,7 +153,7 @@
 												</div>
 
 												<div class="d-table-cell align-middle">
-													<p class="__count js-count" data-from="0" data-to="2720">2 720</p>
+													<p class="__count js-count" data-from="0" data-to="{{ $promotionCount }}"></p>
 
 													<p class="__title">Produits en promotion</p>
 												</div>
@@ -173,7 +173,7 @@
 												</div>
 
 												<div class="d-table-cell align-middle">
-													<p class="__count js-count" data-from="0" data-to="10000">10 000</p>
+													<p class="__count js-count" data-from="0" data-to="{{ $souscategories }}"></p>
 
 													<p class="__title">Familles de produits</p>
 												</div>
@@ -194,7 +194,7 @@
 												</div>
 
 												<div class="d-table-cell align-middle">
-													<p class="__count js-count" data-from="0" data-to="128">128</p>
+													<p class="__count js-count" data-from="0" data-to="{{ $categories }}"></p>
 
 													<p class="__title">Rayons </p>
 												</div>
