@@ -69,8 +69,10 @@ public $sous_categories = array();
             $this->valable = $produit->valable;
             $this->piece = $produit->piece;
             $this->poids = $produit->poids;
-           // $this->cmd = $produit->cmd;
-//$this->vble = $produit->vble;
+            $this->type_poids = $produit->type_poids;
+            $this->type_taille = $produit->type_taille;
+            $this->type_piece = $produit->type_piece;
+         
            $this->vo = $produit->vo ?? false;
             $this->livrable = $produit->livrable;
           //  $this->bonne_affaire = $produit->bonne_affaire;
@@ -158,6 +160,10 @@ public $sous_categories = array();
         $produit->reference = $this->reference;
         $produit->free_shipping = $this->free_shipping;
         $produit->bonne_affaires = $this->bonne_affaires ?? false;
+        $produit->type_poids = $this->type_poids ?? false;
+        $produit->type_taille = $this->type_taille ?? false;
+        $produit->type_piece = $this->type_piece ?? false;
+      
         $produit->taille = $this->taille;
         $produit->valable = $this->valable ?? false;
 
@@ -242,6 +248,11 @@ public $sous_categories = array();
             $this->produit->valable = $this->valable ?? false;
             $this->produit->piece = $this->piece;
             $this->produit->poids = $this->poids;
+
+            $this->produit->type_poids = $this->type_poids ?? false;
+            $this->produit->type_taille = $this->type_taille ?? false;
+            $this->produit->type_piece = $this->type_piece ?? false;
+          
           //  $this->produit->cmd = $this->cmd;
          //   $this->produit->vble = $this->vble;
             $this->produit->vo = $this->vo ?? false;
