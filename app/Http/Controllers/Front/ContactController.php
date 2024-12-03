@@ -34,7 +34,7 @@ class ContactController extends Controller
         $configs= config::firstOrFail();
         $categories = Category::count();
         $products = produits::count();
-        $promotionCount = produits::where('inPromotion', true)->count();
+        $promotionCount = produits::where('id_promotion', true)->count();
         $souscategories = Sous_category::count();
         return view('front.about.about', compact('configs', 'products', 'categories', 'souscategories','promotionCount'));
     }
