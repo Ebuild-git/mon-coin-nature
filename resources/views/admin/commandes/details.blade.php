@@ -117,7 +117,7 @@
                                         </h6>
                                         Montant total : <br>
                                         <b>{{ $commande->montant()  }} DT</b>
-                                        @if ($commande->transport->frais)
+                                        @if ($commande->frais)
                                             ( Frais de livraison inclu ( {{ $commande->transport->frais ?? 0 }} DT) ) .
                                         @endif
                                         @if ($commande->coupon)

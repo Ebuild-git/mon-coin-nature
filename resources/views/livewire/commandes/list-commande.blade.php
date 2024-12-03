@@ -127,7 +127,7 @@
                         </td>
                         <td>{{ $commande->montant() }} <x-devise></x-devise> </td>
                         <td>
-                      {{ $commande->transport->frais ?? '' }} 
+                      {{ $commande->frais ?? '' }} 
 
                         </td>
                         <td>
