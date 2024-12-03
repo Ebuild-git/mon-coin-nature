@@ -94,20 +94,22 @@ $produit = DB::table('produits')->get();
 
                         .top-bar__logo {
   position: relative;
-  margin-left: -15px;
+  margin-left: 2px;
   z-index: 6
 }
 .top-bar__logo img {
   height: 90px
 }
 
-              
+.site-logo:hover img {
+                            transform: scale(1.9);
+                        }
                         .site-logo img {
-                            height: 300px;
-                            width: 300px;
+                            height: 100px;
+                            width: 100px;
                             object-fit: contain;
                             transition: transform 0.3s ease;
-                            margin-top: -31px;
+                            margin-top: -21px;
                         }
 
                         @media (max-width: 768px) {
@@ -373,9 +375,11 @@ $produit = DB::table('produits')->get();
                 <div class="row">
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
                         <div class="footer__item">
-                            <a class="site-logo" href="index.html">
+                            <a class="site-logo" href="{{ route('home') }}">
                                 <img class="img-fluid  lazy" src="{{ Storage::url($config->logo ?? ' ') }}" data-src="{{ Storage::url($config->logo ?? ' ') }}" alt="demo" />
                             </a>
+
+                            
                         </div>
                     </div>
 
