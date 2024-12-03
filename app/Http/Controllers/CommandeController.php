@@ -191,7 +191,7 @@ if($connecte){
       $this->sendOrderConfirmationMail($order);
      
     //effacer le panier
-  // session()->forget('cart');
+   session()->forget('cart');
    session()->forget('coupon');
 
     //generate notification
