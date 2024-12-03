@@ -316,7 +316,7 @@ $produit = DB::table('produits')->get();
                                                 <form action="{{ route('locale.change') }}" method="POST">
                                                     @csrf
                                                     <div class="dropdown">
-                                                        <button class="dropbtn" style="background-color: #009640">
+                                                        <button class="dropbtn" {{-- style="background-color: #009640" --}}>
                                                             {{ app()->getLocale() == 'fr' ? 'Français' : 'English' }}
                                                         </button>
                                                         <div class="dropdown-content">

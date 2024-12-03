@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\ContactRequest;
-use App\Models\{config, Contact, Category, Sous_category, produits};
+use App\Models\{config, Contact, Category, Sous_category, produits, promotions};
 
 class ContactController extends Controller
 {
@@ -34,7 +34,7 @@ class ContactController extends Controller
         $configs= config::firstOrFail();
         $categories = Category::count();
         $products = produits::count();
-        $promotionCount = produits::where('id_promotion', true)->count();
+        $promotionCount = promotions::count();
         $souscategories = Sous_category::count();
         return view('front.about.about', compact('configs', 'products', 'categories', 'souscategories','promotionCount'));
     }
